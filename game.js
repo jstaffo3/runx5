@@ -2,10 +2,10 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: p
 
 function preload() {
     game.load.image('background','assets/grass.png')
-    game.load.image('Kai', 'assets/kai.png');
-    game.load.image('Fosse', 'assets/fosse.png');
-    game.load.image('Megan', 'assets/megan.png');
-    game.load.image('matthew', 'assets/matthew.png');
+    game.load.image('kai', 'assets/kai.png');
+    game.load.image('fosse', 'assets/fosse.png');
+    game.load.image('megan', 'assets/megan.png');
+    game.load.image('matt', 'assets/matthew.png');
 }
 let cursors;
 let charKai;
@@ -15,13 +15,13 @@ function create() {
     game.add.tileSprite(0, 0, 2000, 2000, 'background');
     game.world.setBounds(0, 0, 2000, 2000);
 
-    charKai = game.add.sprite(game.world.centerX, game.world.centerY, 'Kai');
+    charKai = game.add.sprite(game.world.centerX, game.world.centerY, 'kai');
     charKai.scale.setTo(0.3);
 
     enemies = game.add.physicsGroup(Phaser.Physics.ARCADE);
 
     let opponent = [];
-    let spriteNames = ['Fosse', 'Megan', 'Matt', 'John'];
+    let spriteNames = ['fosse', 'megan', 'matt', 'john'];
     for (let i = 0; i <4; i++ )
     {
         opponent[i] = enemies.create(game.world.randomX, game.world.randomY, spriteNames[i],i);
