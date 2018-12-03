@@ -4,7 +4,7 @@ function playerMovement() {
     let speed = playerSpeedBase * playerSpeedModifier;
 
     if (keys.isDown(87)) {
-        player.y -= speed;
+        charKai.body -= speed;
     }
     if (keys.isDown(83)) {
         player.y += speed;

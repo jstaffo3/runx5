@@ -1,14 +1,68 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update});
 
 function preload() {
-    game.load.image('fosse', 'assets/fosse.png');
+    game.load.image('background','assets/grass.png')
+    game.load.image('Kai', 'assets/kai.png');
+    game.load.image('Fosse', 'assets/fosse.png');
+    game.load.image('Megan', 'assets/megan.png');
 
 }
+let cursors;
+let charKai;
+let enemies;
 
 function create() {
-    let fosse = game.add.sprite(50, 50, 'fosse');
+    game.add.tileSprite(0, 0, 2000, 2000, 'background');
+    game.world.setBounds(0, 0, 2000, 2000);
+
+    charKai = game.add.sprite(game.world.centerX, game.world.centerY, 'Kai');
+    charKai.scale.setTo(0.3);
+
+    enemies = game.add.physicsGroup(Phaser.Physics.ARCADE);
+
+    let opponent = [];
+    let spriteNames = ['Fosse', 'Megan', 'Matt', 'John'];
+    for (let i = 0; i <4; i++ )
+    {
+        opponent[i] = enemies.create(game.world.randomX, game.world.randomY, spriteNames[i],i);
+        opponent[i].scale.setTo(0.3);
+        opponent[i].vel = 400;
+    }
+    game.physics.startSystem(Phaser.Physics.P2JS);
+    game.physics.p2.enable(charKai);
+    charKai.body.fixedRotation = true;
+
+    cursors = game.input.keyboard.createCursorKeys();
+    game.camera.follow(charKai, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
 }
 
-function update() {
-    playerMovement();
+function update(){
+    let speed = playerSpeedBase * playerSpeedModifier;
+    // enemies.body.setZeroVelocity();
+    charKai.body.setZeroVelocity();
+
+    if (cursors.up.isDown)
+    {
+        charKai.body.moveUp(speed);
+        //   enemies.body.moveUp(250);
+
+    }
+    else if (cursors.down.isDown)
+    {
+        charKai.body.moveDown(speed);
+    }
+
+    if (cursors.left.isDown)
+    {
+        charKai.body.moveLeft(speed);
+    }
+    else if (cursors.right.isDown)
+    {
+        charKai.body.moveRight(speed);
+    }
+
+
+
+
 }
+
