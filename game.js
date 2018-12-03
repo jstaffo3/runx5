@@ -5,7 +5,7 @@ function preload() {
     game.load.image('Kai', 'assets/kai.png');
     game.load.image('Fosse', 'assets/fosse.png');
     game.load.image('Megan', 'assets/megan.png');
-
+    game.load.image('matthew', 'assets/matthew.png');
 }
 let cursors;
 let charKai;
