@@ -1,4 +1,16 @@
+body {
+  text-align: center;
+}
+
+canvas {
+  margin: 0 auto;
+}
+
 h1 {
   font-size: 300%;
   color: purple;
+}
+
+progress {
+  width: 800px;
 }
