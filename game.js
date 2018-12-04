@@ -22,11 +22,8 @@ class Enemy {
   constructor(name, speed) {
     this.name = name;
     this.speed = speed;
-    console.log('Game is', game);
-    console.log('game.add is ', game.add);
     this.sprite = game.add.sprite(game.world.randomX, game.world.randomY, name);
     this.sprite.scale.setTo(0.3);
-    this.sprite.vel = 400;
   }
   move() {
     const dx = charKai.position.x - this.sprite.position.x;
@@ -35,6 +32,32 @@ class Enemy {
     this.sprite.position.x += (dx / magnitude) * this.speed;
     this.sprite.position.y += (dy / magnitude) * this.speed;
   }
+  collisionCheck(object) {
+      if (Math.abs(this.sprite.position.x - object.position.x) < 20 || Math.abs(this.sprite.position.y - object.position.y) < 20) {
+          console.log('ahhhhh');
+      }
+  }
+}
+
+class Powerup {
+    constructor() {
+        this.type = Math.floor(Math.random() * 4);
+        switch (this.type) {
+            case 0:
+                this.name = 'gun';
+                break;
+            case 1:
+                this.name = 'tp';
+                break;
+            case 2:
+                this.name = 'bomb';
+                break;
+            case 3:
+                this.name = 'nuts';
+                break;
+        }
+        this.sprite = game.add.sprite(game.world.randomX, game.world.randomY, name);
+    }
 }
 
 let cursors;
@@ -83,4 +106,5 @@ function update() {
     }
 
     enemies.forEach(e => e.move());
+    enemies.forEach(e => e.collisionCheck(charKai));
 }
