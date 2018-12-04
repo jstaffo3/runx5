@@ -16,6 +16,7 @@ function preload() {
     game.load.image('megan', 'assets/megan.png');
     game.load.image('matt', 'assets/matthew.png');
     game.load.image('john', 'assets/john.png');
+    game.load.image('toal','assets/toal.png');
 }
 
 let cursors;
@@ -28,10 +29,13 @@ function create() {
 
     activePlayer = new Player('kai');
 
-    enemies.push(new Enemy('fosse', 4.01));
-    enemies.push(new Enemy('megan', 5.2));
-    enemies.push(new Enemy('matt', 1));
-    enemies.push(new Enemy('john', 2.9));
+    enemies.push(new BossEnemy('fosse', 4.01));
+    enemies.push(new BossEnemy('megan', 5.2));
+    enemies.push(new BossEnemy('matt', 1));
+    enemies.push(new BossEnemy('john', 2.9));
+    for(let i = 0; i < 10; i++){
+    	enemies.push(new ToalMinion());
+	}
 
     game.add.physicsGroup(Phaser.Physics.ARCADE);
     game.physics.startSystem(Phaser.Physics.P2JS);

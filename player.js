@@ -2,8 +2,7 @@ class Player {
 	constructor(name) {
 		this.name = name;
 		this.sprite = game.add.sprite(game.world.centerX, game.world.centerY, name);
-		this.sprite.scale.setTo(0.3);
-		this.sprite.scale.setTo(0.3);
+		this.sprite.scale.setTo(.3);
 	}
 	
 	move() {
