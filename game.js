@@ -19,24 +19,11 @@ function preload() {
     game.load.image('toal','assets/toal.png');
 }
 
-let cursors;
-let activePlayer;
-let enemies = [];
-let bossCounter = 0;
-
 function create() {
     game.add.tileSprite(0, 0, 2000, 2000, 'background');
     game.world.setBounds(0, 0, 2000, 2000);
 
     activePlayer = new Player('kai');
-
-    /*enemies.push(new BossEnemy('fosse', 4.01));
-    enemies.push(new BossEnemy('megan', 5.2));
-    enemies.push(new BossEnemy('matt', 1));
-    enemies.push(new BossEnemy('john', 2.9));
-    for(let i = 0; i < 10; i++){
-    	enemies.push(new ToalMinion());
-	}*/
 
     game.add.physicsGroup(Phaser.Physics.ARCADE);
     game.physics.startSystem(Phaser.Physics.P2JS);
