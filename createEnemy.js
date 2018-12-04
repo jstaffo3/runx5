@@ -25,7 +25,7 @@ class ToalMinion {
 	constructor() {
 		this.speed = 4;
 		this.sprite = game.add.sprite(game.world.randomX, game.world.randomY, 'toal');
-		this.sprite.scale.setTo(0.1);
+		this.sprite.scale.setTo(0.175);
 	}
 	move(target) {
 		const dx = target.sprite.position.x - this.sprite.position.x;
