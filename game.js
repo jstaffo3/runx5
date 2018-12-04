@@ -15,6 +15,9 @@ let enemies;
 let opponent = [];
 let enemySpeed = [];
 
+let spriteNames = ['fosse', 'megan', 'matt', 'john'];
+
+
 function create() {
     game.add.tileSprite(0, 0, 2000, 2000, 'background');
     game.world.setBounds(0, 0, 2000, 2000);
@@ -23,12 +26,11 @@ function create() {
     charKai.scale.setTo(0.3);
 
     enemies = game.add.physicsGroup(Phaser.Physics.ARCADE);
-    let spriteNames = ['fosse', 'megan', 'matt', 'john'];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < spriteNames.length; i++) {
         opponent[i] = game.add.sprite(game.world.randomX, game.world.randomY, spriteNames[i]);
         opponent[i].scale.setTo(0.3);
         opponent[i].vel = 400;
-        enemySpeed[i] = Math.random() * 150 + 20;
+        enemySpeed[i] = Math.random() * 5 + 1;
     }
     game.physics.startSystem(Phaser.Physics.P2JS);
     game.physics.p2.enable(charKai);
@@ -60,9 +62,12 @@ function update() {
     } else if (cursors.right.isDown || wasd.right.isDown) {
         charKai.body.moveRight(speed);
     }
-    for (let i = 0; i < 4; i++) {
-        opponent[i].position.x += (charKai.position.x - opponent[i].position.x) / enemySpeed[i];
-        opponent[i].position.y += (charKai.position.y - opponent[i].position.y) / enemySpeed[i];
-
+    for (let i = 0; i < spriteNames.length; i++) {
+        const enemy = opponent[i].position;
+        const dx = charKai.position.x - enemy.x;
+        const dy = charKai.position.y - enemy.y;
+        const magnitude = Math.hypot(dx, dy);
+        enemy.x += (dx / magnitude) * enemySpeed[i];
+        enemy.y += (dy / magnitude) * enemySpeed[i];
     }
 }
