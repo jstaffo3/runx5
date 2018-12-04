@@ -1,8 +1,11 @@
 function spawnMinions() {
-    for(let i = 0; i < 10; i++){
-        enemies.push(new ToalMinion());
+    if (toalCounter < 50) {
+        for (let i = 0; i < 10; i++) {
+            enemies.push(new ToalMinion());
+        }
+        game.time.events.add(Phaser.Timer.SECOND * 5, spawnMinions, this);
+        toalCounter += 10;
     }
-    game.time.events.add(Phaser.Timer.SECOND * 5, spawnMinions, this);
 }
 
 function spawnBoss() {
