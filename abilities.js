@@ -1,4 +1,4 @@
-class Powerup {
+class Ability {
     constructor() {
         this.type = Math.floor(Math.random() * 4);
         switch (this.type) {
@@ -12,7 +12,7 @@ class Powerup {
                 this.name = 'bomb';
                 break;
             case 3:
-                this.name = 'nuts';
+                this.name = 'scarecrow';
                 break;
         }
         this.sprite = game.add.sprite(game.world.randomX, game.world.randomY, name);
