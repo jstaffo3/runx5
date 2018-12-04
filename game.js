@@ -22,6 +22,7 @@ function preload() {
 let cursors;
 let activePlayer;
 let enemies = [];
+let bossCounter = 0;
 
 function create() {
     game.add.tileSprite(0, 0, 2000, 2000, 'background');
@@ -29,13 +30,13 @@ function create() {
 
     activePlayer = new Player('kai');
 
-    enemies.push(new BossEnemy('fosse', 4.01));
+    /*enemies.push(new BossEnemy('fosse', 4.01));
     enemies.push(new BossEnemy('megan', 5.2));
     enemies.push(new BossEnemy('matt', 1));
     enemies.push(new BossEnemy('john', 2.9));
     for(let i = 0; i < 10; i++){
     	enemies.push(new ToalMinion());
-	}
+	}*/
 
     game.add.physicsGroup(Phaser.Physics.ARCADE);
     game.physics.startSystem(Phaser.Physics.P2JS);
@@ -50,6 +51,10 @@ function create() {
         right: game.input.keyboard.addKey(Phaser.Keyboard.D),
     };
     game.camera.follow(activePlayer.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
+
+    //Enemy Spawning
+    game.time.events.add(Phaser.Timer.SECOND * 5, spawnMinions, this);
+    game.time.events.add(Phaser.Timer.SECOND * 10, spawnBoss, this);
 }
 
 function update() {
