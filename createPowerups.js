@@ -16,5 +16,7 @@ class Powerup {
                 break;
         }
         this.sprite = game.add.sprite(game.world.randomX, game.world.randomY, name);
+        this.sprite.anchor.x = 0.5;
+        this.sprite.anchor.y = 0.5;
     }
 }

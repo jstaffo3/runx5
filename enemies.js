@@ -3,6 +3,8 @@ class BossEnemy {
         this.name = name;
         this.speed = speed;
         this.sprite = game.add.sprite(game.world.randomX, game.world.randomY, name);
+        this.sprite.anchor.x = 0.5;
+        this.sprite.anchor.y = 0.5;
         this.sprite.scale.setTo(0.3);
     }
 
@@ -25,6 +27,8 @@ class ToalMinion {
 	constructor() {
 		this.speed = 4;
 		this.sprite = game.add.sprite(game.world.randomX, game.world.randomY, 'toal');
+        this.sprite.anchor.x = 0.5;
+        this.sprite.anchor.y = 0.5;
 		this.sprite.scale.setTo(0.175);
 	}
 	move(target) {
