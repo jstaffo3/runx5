@@ -1,7 +1,7 @@
 let Game_Over = {
 
     preload : function() {
-        game.load.image('background', 'assets/grass.png');
+        preloadAssets('gameOver');
     },
 
     create : function() {

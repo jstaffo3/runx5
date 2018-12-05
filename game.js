@@ -1,13 +1,7 @@
 let Game = {
 
     preload: function() {
-        game.load.image('background', 'assets/grass.png');
-        game.load.image('kai', 'assets/kai.png');
-        game.load.image('fosse', 'assets/fosse.png');
-        game.load.image('megan', 'assets/megan.png');
-        game.load.image('matt', 'assets/matthew.png');
-        game.load.image('john', 'assets/john.png');
-        game.load.image('toal', 'assets/toal.png');
+        preloadAssets('all');
     },
 
     create: function() {
@@ -41,7 +35,7 @@ let Game = {
         activePlayer.move();
         enemies.forEach(e => e.move(activePlayer));
         enemies.forEach(e => e.collisionCheck(activePlayer));
-        healthBar.value = activePlayer.health
+        healthBar.value = activePlayer.health;
         if (activePlayer.health <= 0) {
             game.state.start('Game_Over');
         }

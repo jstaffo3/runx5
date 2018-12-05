@@ -1,8 +1,7 @@
 let Menu = {
 
     preload : function() {
-        game.load.image('kai', 'assets/kai.png');
-        game.load.image('background', 'assets/grass.png');
+        preloadAssets('all');
     },
 
     create: function () {
