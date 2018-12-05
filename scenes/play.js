@@ -55,11 +55,11 @@ let Game = {
             left: game.input.keyboard.addKey(Phaser.Keyboard.A),
             right: game.input.keyboard.addKey(Phaser.Keyboard.D),
         };
-        let enemy1 = new ToalMinion();
+        enemy1 = new ToalMinion();
     },
     update: function() {
         player.move();
-
+        moveToward(enemy1, player);
     },
     render: function() {
 

@@ -1,12 +1,21 @@
 class ToalMinion {
     constructor() {
-        this.speed = Math.random() * 4 + 1;
+        this.speed = Math.random() * 130 + 150;
         this.sprite = toalMinionGroup.create(game.world.randomX, game.world.randomY, 'toal');
         centerSprite(this.sprite);
-        this.sprite.scale.setTo(Math.random() * .15 + 0.125);
+        scaleSprite(this.sprite, Math.random() * 0.15 + 0.15);
+        this.sprite.body.fixedRotation = true;
 
         //Physics
         this.sprite.body.setCollisionGroup(toalMinionsCollisionGroup);
         this.sprite.body.collides([toalMinionsCollisionGroup, playerCollisionGroup]);
     }
+}
+function moveToward(follower, leader) {
+    const dx = leader.sprite.x - follower.sprite.x;
+    const dy = leader.sprite.y - follower.sprite.y;
+    const magnitude = Math.hypot(dx, dy);
+    follower.sprite.body.setZeroVelocity();
+    follower.sprite.body.moveRight((dx / magnitude) * follower.speed);
+    follower.sprite.body.moveDown((dy / magnitude) * follower.speed);
 }

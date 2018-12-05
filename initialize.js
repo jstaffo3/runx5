@@ -18,5 +18,6 @@ let bossEnemyGroup;
 //let bossEnemiesCollisionGroup;
 let playerSpeedBase = 300;
 let playerSpeedModifier = 1;
+let enemy1;
 
 game.state.start('Menu');
