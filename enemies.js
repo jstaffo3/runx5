@@ -17,6 +17,7 @@ class BossEnemy {
     }
     collisionCheck(object) {
         if (Math.abs(this.sprite.position.x - object.sprite.position.x) < 20 && Math.abs(this.sprite.position.y - object.sprite.position.y) < 20) {
+            activePlayer.health -= 10;
             console.log('ahhhhh');
         }
     }
@@ -39,7 +40,8 @@ class ToalMinion {
 	}
 	collisionCheck(object) {
 		if (Math.abs(this.sprite.position.x - object.sprite.position.x) < 20 && Math.abs(this.sprite.position.y - object.sprite.position.y) < 20) {
-			console.log('ahhhhh');
+			activePlayer.health -= 1;
+		    console.log('ahhhhh');
 		}
 	}
 }

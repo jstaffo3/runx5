@@ -1,15 +1,3 @@
-/*const game = new Phaser.Game(
-    800,
-    600,
-    Phaser.AUTO,
-    'phaser-example', {
-        preload: preload,
-        create: create,
-        update: update
-    }
-);
-*/
-
 let Game = {
 
     preload: function() {
@@ -46,18 +34,17 @@ let Game = {
         game.time.events.add(Phaser.Timer.SECOND * 5, spawnMinions, this);
         game.time.events.add(Phaser.Timer.SECOND * 10, spawnBoss, this);
 
-        let spaceBar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        spaceBar.onDown.addOnce(this.endGame, this);
+
     },
 
     update: function() {
         activePlayer.move();
         enemies.forEach(e => e.move(activePlayer));
         enemies.forEach(e => e.collisionCheck(activePlayer));
+        healthBar.value = activePlayer.health
+        if (activePlayer.health <= 0) {
+            game.state.start('Game_Over');
+        }
     },
-
-    endGame: function () {
-        game.state.start('Game_Over');
-    }
 
 };

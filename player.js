@@ -5,10 +5,11 @@ class Player {
         this.sprite.anchor.x = 0.5;
         this.sprite.anchor.y = 0.5;
 		this.sprite.scale.setTo(.3);
+		this.health = 100;
 	}
 	
 	move() {
-		let speed = 300;
+		let speed = playerSpeedBase * playerSpeedModifier;
 		this.sprite.body.setZeroVelocity();
 		if (cursors.up.isDown || wasd.up.isDown) {
 			this.sprite.body.moveUp(speed);
