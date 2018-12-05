@@ -56,12 +56,12 @@ let Game = {
             right: game.input.keyboard.addKey(Phaser.Keyboard.D),
         };
         enemy1 = new ToalMinion();
-    },
+	},
     update: function() {
         player.move();
         moveToward(enemy1, player);
     },
     render: function() {
-
+		game.debug.text(`Current player health: ${player.health}`, 20, 20);
     }
 };
