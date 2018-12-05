@@ -6,4 +6,5 @@ let toalCounter;
 let playerSpeedBase = 300;
 let playerSpeedModifier = 1;
 let chosenPlayer;
+let score;
 const healthBar = document.querySelector('#health');

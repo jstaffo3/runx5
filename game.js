@@ -6,6 +6,7 @@ let Game = {
 
     create: function() {
         toalCounter = 0;
+        score = 0;
         enemies = [];
         bossCounter = 0;
         game.add.tileSprite(0, 0, 2000, 2000, 'background');
@@ -30,7 +31,7 @@ let Game = {
         //Enemy Spawning
         game.time.events.add(Phaser.Timer.SECOND * 5, spawnMinions, this);
         game.time.events.add(Phaser.Timer.SECOND * 10, spawnBoss, this);
-
+        scoreText = game.add.text(game.camera.x + 25, game.camera.y + 25, `Score: ${Math.floor(score)}`, { font: "25px Arial", fill: '#000000', align: "center" });
 
     },
 
@@ -42,6 +43,10 @@ let Game = {
         if (activePlayer.health <= 0) {
             game.state.start('Game_Over');
         }
+        score += 1;
+        scoreText.setText(`Score: ${Math.floor(score)}`);
+        scoreText.x = game.camera.x + 25;
+        scoreText.y = game.camera.y + 25;
     },
 
 };
