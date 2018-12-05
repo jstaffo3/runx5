@@ -8,6 +8,7 @@ function preloadAssets (set) {
             game.load.image('matt', 'assets/matthew.png');
             game.load.image('john', 'assets/john.png');
             game.load.image('toal', 'assets/toal.png');
+            game.load.image('title', 'assets/title.png');
             break;
         case 'gameOver':
             game.load.image('background', 'assets/grass.png');
