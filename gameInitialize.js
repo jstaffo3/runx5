@@ -1,8 +1,8 @@
 let cursors;
 let activePlayer;
 let enemies = [];
-let bossCounter = 0;
-let toalCounter = 0;
+let bossCounter;
+let toalCounter;
 let playerSpeedBase = 300;
 let playerSpeedModifier = 1;
 let chosenPlayer;

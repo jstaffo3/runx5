@@ -5,6 +5,9 @@ let Game = {
     },
 
     create: function() {
+        toalCounter = 0;
+        enemies = [];
+        bossCounter = 0;
         game.add.tileSprite(0, 0, 2000, 2000, 'background');
         game.world.setBounds(0, 0, 2000, 2000);
 
