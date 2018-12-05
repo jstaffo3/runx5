@@ -8,7 +8,7 @@ let Game = {
         game.add.tileSprite(0, 0, 2000, 2000, 'background');
         game.world.setBounds(0, 0, 2000, 2000);
 
-        activePlayer = new Player('kai');
+        activePlayer = new Player(chosenPlayer);
 
         game.add.physicsGroup(Phaser.Physics.ARCADE);
         game.physics.startSystem(Phaser.Physics.P2JS);
