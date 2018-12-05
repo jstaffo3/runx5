@@ -9,7 +9,7 @@ class Ability {
                 this.name = 'tp';
                 break;
             case 2:
-                this.name = 'bomb';
+                this.name = 'javaBomb'; //only kills Toals
                 break;
             case 3:
                 this.name = 'scarecrow';

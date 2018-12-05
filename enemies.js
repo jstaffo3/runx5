@@ -24,7 +24,7 @@ class BossEnemy {
 
 class ToalMinion {
 	constructor() {
-		this.speed = 4;
+		this.speed = Math.random() * 4 + 1;
 		this.sprite = game.add.sprite(game.world.randomX, game.world.randomY, 'toal');
         this.sprite.anchor.x = 0.5;
         this.sprite.anchor.y = 0.5;
