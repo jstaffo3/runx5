@@ -1,11 +1,11 @@
 class ToalMinion {
     constructor() {
-        this.speed = Math.random() * 130 + 150;
-        this.sprite = toalMinionGroup.create(game.world.randomX, game.world.randomY, 'toal');
-        centerSprite(this.sprite);
-        let size = Math.random() * .15 + 0.125;
+		const size = Math.random() * .15 + 0.125;
+		this.speed = Math.random() * 130 + 150;
+		this.sprite = toalMinionGroup.create(game.world.randomX, game.world.randomY, 'toal');
+		centerSprite(this.sprite);
         this.sprite.scale.setTo(size);
-        scaleSprite(this.sprite, Math.random() * 0.15 + 0.15);
+        scaleSprite(this.sprite, size);
         this.sprite.body.fixedRotation = true;
 
         //Physics
