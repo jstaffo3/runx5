@@ -1,3 +1,10 @@
+function centerSprite(object) {
+    object.anchor.x = 0.5;
+    object.anchor.y = 0.5;
+}
+function toalCollision() {
+    player.health -= 1;
+}
 function preloadAssets (set) {
     switch (set) {
         case 'all':
@@ -13,4 +20,8 @@ function preloadAssets (set) {
             game.load.image('background', 'assets/grass.png');
             break;
     }
+}
+function scaleSprite(object, scale) {
+    object.scale.setTo(scale);
+    object.body.setRectangle(object.width, object.height);
 }
