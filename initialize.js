@@ -19,5 +19,6 @@ let bossEnemyGroup;
 let playerSpeedBase = 300;
 let playerSpeedModifier = 1;
 let enemy1;
+let enemy2;
 
 game.state.start('Menu');
