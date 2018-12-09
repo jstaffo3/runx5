@@ -2,8 +2,12 @@ function centerSprite(object) {
     object.anchor.x = 0.5;
     object.anchor.y = 0.5;
 }
-function toalCollision() {
-    player.health -= 1;
+function toalCollision(object) {
+    return function() {
+        player.health -= 1;
+        toalMinionGroup.remove(object);
+        object.sprite.kill();
+    }
 }
 function preloadAssets (set) {
     switch (set) {
@@ -24,4 +28,15 @@ function preloadAssets (set) {
 function scaleSprite(object, scale) {
     object.scale.setTo(scale);
     object.body.setRectangle(object.width, object.height);
+}
+function moveToward(follower, leader) {
+    const dx = leader.sprite.x - follower.x;
+    const dy = leader.sprite.y - follower.y;
+    const magnitude = Math.hypot(dx, dy);
+    follower.body.setZeroVelocity();
+    follower.body.moveRight((dx / magnitude) * follower.speed);
+    follower.body.moveDown((dy / magnitude) * follower.speed);
+}
+function spawnToals() {
+
 }

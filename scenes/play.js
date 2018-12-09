@@ -39,10 +39,7 @@ let Game = {
         //toalMinion.body.collides(toalMinionsCollisionGroup, bossEnemiesCollisionGroup);
         //bossEnemy.body.collides(bossEnemiesCollisionGroup, playerCollisionGroup);
         //bossEnemy.body.collides(bossEnemiesCollisionGroup, toalMinionsCollisionGroup);
-
-        //toalMinionGroup.body.fixedRotation = true;
-
-        player.sprite.body.collides(toalMinionsCollisionGroup, toalCollision, this);
+        player.sprite.body.collides(toalMinionsCollisionGroup);
 
         //Camera
         game.camera.follow(player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
@@ -55,11 +52,13 @@ let Game = {
             left: game.input.keyboard.addKey(Phaser.Keyboard.A),
             right: game.input.keyboard.addKey(Phaser.Keyboard.D),
         };
-        enemy1 = new ToalMinion();
+
+        //Spawn Toals
+
 	},
     update: function() {
         player.move();
-        moveToward(enemy1, player);
+        toalMinionGroup.children.forEach(x => moveToward(x, player));
     },
     render: function() {
 		game.debug.text(`Current player health: ${player.health}`, 20, 20);
