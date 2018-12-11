@@ -5,9 +5,9 @@ function centerSprite(object) {
 function toalCollision(object) {
     return function() {
         player.health -= 1;
-        toalMinionGroup.remove(object);
+        //toalMinionGroup.remove(object);
         object.sprite.kill();
-        toalMinionGroup.children.splice(toalMinionGroup.children.indexOf(object),1);
+        //toalMinionGroup.children.splice(toalMinionGroup.children.indexOf(object),1);
     }
 }
 function preloadAssets (set) {
@@ -39,11 +39,9 @@ function moveToward(follower, leader) {
     follower.body.moveDown((dy / magnitude) * follower.speed);
 }
 function spawnToals() {
-    if (toalMinionGroup.children.length < 50){
-        new ToalMinion();
-        new ToalMinion();
-        new ToalMinion();
-        new ToalMinion();
+    for (i=0;i<10;i++) {
         new ToalMinion();
     }
+    game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
+
 }

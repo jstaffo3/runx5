@@ -54,8 +54,7 @@ let Game = {
         };
 
         //Spawn Toals
-        game.time.events.loop(Phaser.Timer.SECOND * 5, spawnToals, this);
-    
+        game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
     },
     update: function() {
         player.move();
