@@ -12,6 +12,6 @@ class ToalMinion {
         this.sprite.body.setRectangle(size*163, size*202);
         this.sprite.body.setCollisionGroup(toalMinionsCollisionGroup);
         this.sprite.body.collides(playerCollisionGroup, toalCollision(this), this);
-
+        this.sprite.body.collides(toalMinionsCollisionGroup);
     }
 }

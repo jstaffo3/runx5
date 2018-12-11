@@ -7,6 +7,7 @@ function toalCollision(object) {
         player.health -= 1;
         toalMinionGroup.remove(object);
         object.sprite.kill();
+        toalMinionGroup.children.splice(toalMinionGroup.children.indexOf(object),1);
     }
 }
 function preloadAssets (set) {
@@ -38,5 +39,11 @@ function moveToward(follower, leader) {
     follower.body.moveDown((dy / magnitude) * follower.speed);
 }
 function spawnToals() {
-
+    if (toalMinionGroup.children.length < 50){
+        new ToalMinion();
+        new ToalMinion();
+        new ToalMinion();
+        new ToalMinion();
+        new ToalMinion();
+    }
 }

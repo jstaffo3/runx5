@@ -43,7 +43,7 @@ let Game = {
 
         //Camera
         game.camera.follow(player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
-
+    
         //Configure Controls
         cursors = game.input.keyboard.createCursorKeys();
         wasd = {
@@ -54,8 +54,9 @@ let Game = {
         };
 
         //Spawn Toals
-
-	},
+        game.time.events.loop(Phaser.Timer.SECOND * 5, spawnToals, this);
+    
+    },
     update: function() {
         player.move();
         toalMinionGroup.children.forEach(x => moveToward(x, player));
