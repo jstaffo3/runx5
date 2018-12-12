@@ -1,7 +1,14 @@
-# runx5
-This game is called runrunrunrunrun.
-In this game you <h2>runrunrunrunrun</h2>
-You have five playable characters with which you can runrunrunrunrun
-<h1>
-To play go to <a href='http://game.soit.us'>game.soit.us</a> or <a href="https://jstaffo3.github.io/runx5/">here</a>
-</h1>
+<h1>runx5</h1>
+To play, click <a href="https://jstaffo3.github.io/runx5/">here</a>
+<p></p>
+<h5>Description:</h5>
+Run away from your friends and teacher!<br>
+Score points by surviving and eliminating enemies.
+<h5>Other Optional Header:</h5>
+More text we could add
+<h5>Game creators:</h5><ul>
+<li>John Stafford</li>
+<li>Fosse Lin-Bianco</li>
+<li>Matthew Low</li>
+<li>Megan West</li>
+<li>Kai Miller</li></ul>

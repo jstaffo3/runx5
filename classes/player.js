@@ -4,6 +4,7 @@ class Player {
         this.sprite = game.add.sprite(game.world.centerX, game.world.centerY, name);
         centerSprite(this.sprite);
         this.health = 100;
+        this.healthMax = 100;
     }
     move() {
 		//let speed = Math.hypot(this.sprite.body.velocity.x,this.sprite.body.velocity.y);
