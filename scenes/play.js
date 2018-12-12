@@ -53,7 +53,7 @@ let Game = {
 
         //Camera
         game.camera.follow(player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
-    
+
         //Configure Controls
         cursors = game.input.keyboard.createCursorKeys();
         wasd = {
@@ -68,19 +68,12 @@ let Game = {
         game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
 
         //Health Bar
-        let healthCanvas = game.add.bitmapData(healthWidth+20,healthHeight+20);
-        healthCanvas.ctx.rect(healthLocation,healthLocation,healthWidth,healthHeight);
-        healthCanvas.ctx.fillStyle = '#3fd5cb';
-        healthCanvas.ctx.fill();
-        let healthCanvasBorder = game.add.bitmapData(healthWidth+20,healthHeight+20);
-        healthCanvasBorder.ctx.rect(healthLocation,healthLocation,healthWidth,healthHeight);
-        healthCanvasBorder.ctx.strokeStyle = '#000000';
-        healthCanvasBorder.ctx.stroke();
-        healthBar = game.add.sprite(healthLocation, healthLocation, healthCanvas);
-        healthBarBorder = game.add.sprite(healthLocation, healthLocation, healthCanvasBorder);
-        healthBarBorder.fixedToCamera = true;
+        healthBar = game.add.sprite(healthLocation[0], healthLocation[1], 'healthBar');
         healthBar.fixedToCamera = true;
-        healthBar.alpha = 0.85;
+        healthBarFill = game.add.sprite(healthLocation[0], healthLocation[1], 'healthBarFill');
+        healthBarFill.fixedToCamera = true;
+        healthBar.anchor.setTo(0.5, 1);
+        healthBarFill.anchor.setTo(0.5, 1);
     },
 
     update: function() {
@@ -88,8 +81,7 @@ let Game = {
         toalMinionGroup.children.forEach(x => moveToward(x, player));
         toalMinionGroup.children.forEach(x => moveToward(x, player));
         score++;
-        healthBar.width = player.health/player.healthMax * healthWidth;
-
+        updateHealthBar();
     },
     render: function() {
         game.debug.text(`Score: ${score}`, 670, 20);

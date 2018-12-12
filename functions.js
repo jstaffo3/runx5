@@ -42,15 +42,17 @@ function preloadAssets (set) {
             game.load.image('matt', 'assets/matthew.png');
             game.load.image('john', 'assets/john.png');
             game.load.image('toal', 'assets/toal.png');
-            game.load.image('', 'assets/toal.png');
             game.load.image('scarecrow', 'assets/scarecrow.png');
             game.load.image('egg', 'assets/yoshiegg.png');
-
+            game.load.image('healthBar', 'assets/healthBar.png');
+            game.load.image('healthBarFill', 'assets/healthBarFill.png');
             break;
         case 'Death':
             game.load.image('background', 'assets/grass.png');
-            game.load.image('restart', 'assets/restartBorder.png');
-            game.load.image('fosse', 'assets/fosse.png');
+            game.load.image('restart', 'assets/restart.png');
+            game.load.image('newCharacter', 'assets/newCharacter.png');
+            game.load.image('restartHover', 'assets/restartHover.png');
+            game.load.image('newCharacterHover', 'assets/newCharacterHover.png');
             break;
     }
 }
@@ -81,6 +83,13 @@ function spawnAbility() {
 
     game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
 
+}
+
+function updateHealthBar() {
+    //player.health/player.healthMax*healthBarFill.width
+    let newWidth = healthBar.width;
+    let cropRect = new Phaser.Rectangle(healthLocation, healthLocation, newWidth, healthBar.height);
+    healthBarFill.crop(cropRect);
 }
 
 

@@ -18,15 +18,12 @@ let bossEnemyGroup;
 //let bossEnemiesCollisionGroup;
 let playerSpeedBase = 300;
 let playerSpeedModifier = 1;
-let enemy1;
-let enemy2;
 let abilityGroup;
 let abilityCollisionGroup;
-let healthBarBorder;
 let healthBar;
-let healthWidth = 400;
-let healthHeight = 30;
-let healthLocation = 15;
+let healthBarFill;
+let healthLocation = [50, 30];
 let restartButton;
+let newCharacterButton;
 
 game.state.start('Menu');
