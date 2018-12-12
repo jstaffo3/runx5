@@ -22,7 +22,7 @@ let abilityGroup;
 let abilityCollisionGroup;
 let healthBar;
 let healthBarFill;
-let healthLocation = [50, 30];
+let healthLocation = [15, 15];
 let restartButton;
 let newCharacterButton;
 

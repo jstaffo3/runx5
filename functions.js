@@ -85,11 +85,9 @@ function spawnAbility() {
 
 }
 
-function updateHealthBar() {
-    //player.health/player.healthMax*healthBarFill.width
-    let newWidth = healthBar.width;
-    let cropRect = new Phaser.Rectangle(healthLocation, healthLocation, newWidth, healthBar.height);
-    healthBarFill.crop(cropRect);
+function crop(object, initialWidth) {
+    let cropRect = new Phaser.Rectangle(0, 0, player.health/player.healthMax*initialWidth, object.height);
+    object.crop(cropRect);
 }
 
 

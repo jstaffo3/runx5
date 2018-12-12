@@ -72,16 +72,15 @@ let Game = {
         healthBar.fixedToCamera = true;
         healthBarFill = game.add.sprite(healthLocation[0], healthLocation[1], 'healthBarFill');
         healthBarFill.fixedToCamera = true;
-        healthBar.anchor.setTo(0.5, 1);
-        healthBarFill.anchor.setTo(0.5, 1);
+        healthBarFill.alpha = 0.9;
+
     },
 
     update: function() {
         player.move();
         toalMinionGroup.children.forEach(x => moveToward(x, player));
-        toalMinionGroup.children.forEach(x => moveToward(x, player));
         score++;
-        updateHealthBar();
+        crop(healthBarFill, healthBar.width);
     },
     render: function() {
         game.debug.text(`Score: ${score}`, 670, 20);
