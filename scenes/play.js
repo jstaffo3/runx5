@@ -13,20 +13,27 @@ let Game = {
         //Create Player Entity
         player = new Player(characterSelection);
 
+
+
         //Setup P2JS and Collisions
         game.physics.startSystem(Phaser.Physics.P2JS);
         game.physics.p2.setImpactEvents(true);
         game.physics.p2.restitution = 0.8;
         playerCollisionGroup = game.physics.p2.createCollisionGroup();
         toalMinionsCollisionGroup = game.physics.p2.createCollisionGroup();
+        abilityCollisionGroup = game.physics.p2.createCollisionGroup();
         //let bossEnemiesCollisionGroup = game.physics.p2.createCollisionGroup();
         game.physics.p2.updateBoundsCollisionGroup();
 
         toalMinionGroup = game.add.group();
         bossEnemyGroup = game.add.group();
+        abilityGroup = game.add.group();
 
         toalMinionGroup.enableBody = true;
         toalMinionGroup.physicsBodyType = Phaser.Physics.P2JS;
+
+        abilityGroup.enableBody = true;
+        abilityGroup.physicsBodyType = Phaser.Physics.P2JS;
         //bossEnemyGroup.enableBody = true;
         //bossEnemyGroup.physicsBodyType = Phaser.Physics.P2JS;
 
@@ -35,11 +42,14 @@ let Game = {
         player.sprite.body.fixedRotation = true;
         player.sprite.body.setCollisionGroup(playerCollisionGroup);
 
+
         //bossEnemyGroup.body.setCollisionGroup(bossEnemiesCollisionGroup);
         //toalMinion.body.collides(toalMinionsCollisionGroup, bossEnemiesCollisionGroup);
         //bossEnemy.body.collides(bossEnemiesCollisionGroup, playerCollisionGroup);
         //bossEnemy.body.collides(bossEnemiesCollisionGroup, toalMinionsCollisionGroup);
         player.sprite.body.collides(toalMinionsCollisionGroup);
+        player.sprite.body.collides(abilityCollisionGroup);
+
 
         //Camera
         game.camera.follow(player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
@@ -55,10 +65,17 @@ let Game = {
 
         //Spawn Toals
         game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
+        game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
+
     },
+
     update: function() {
+
         player.move();
-        toalMinionGroup.children.forEach(x => moveToward(x, player));
+        toalMinionGroup.children.forEach(x => moveToward(x, player))
+
+
+
     },
     render: function() {
 		game.debug.text(`Current player health: ${player.health}`, 20, 20);

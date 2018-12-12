@@ -10,6 +10,15 @@ function toalCollision(object) {
         //toalMinionGroup.children.splice(toalMinionGroup.children.indexOf(object),1);
     }
 }
+
+function abilityCollision(object)
+{
+    return function()
+    {
+        //initiate powerup
+        //delete image of egg
+    }
+}
 function preloadAssets (set) {
     switch (set) {
         case 'all':
@@ -20,6 +29,10 @@ function preloadAssets (set) {
             game.load.image('matt', 'assets/matthew.png');
             game.load.image('john', 'assets/john.png');
             game.load.image('toal', 'assets/toal.png');
+            game.load.image('', 'assets/toal.png');
+            game.load.image('scarecrow', 'assets/scarecrow.png');
+            game.load.image('egg', 'assets/yoshiegg.png');
+
             break;
         case 'gameOver':
             game.load.image('background', 'assets/grass.png');
@@ -39,9 +52,18 @@ function moveToward(follower, leader) {
     follower.body.moveDown((dy / magnitude) * follower.speed);
 }
 function spawnToals() {
-    for (i=0;i<10;i++) {
+    for (let i=0;i<10;i++) {
         new ToalMinion();
     }
     game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
 
 }
+function spawnAbility() {
+        new Ability();
+
+    game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
+
+}
+
+
+
