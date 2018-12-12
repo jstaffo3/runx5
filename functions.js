@@ -5,7 +5,7 @@ function centerSprite(object) {
 
 function toalCollision(object) {
     return function() {
-        player.health -= 1;
+        player.health -= 50;
         //toalMinionGroup.remove(object);
         object.sprite.kill();
         //toalMinionGroup.children.splice(toalMinionGroup.children.indexOf(object),1);
@@ -40,8 +40,10 @@ function preloadAssets (set) {
             break;
         case 'Death':
             game.load.image('background', 'assets/grass.png');
-            game.load.image('restart', 'assets/restartBorder.png');
-            game.load.image('fosse', 'assets/fosse.png');
+            game.load.image('restart', 'assets/restart.png');
+            game.load.image('newCharacter', 'assets/newCharacter.png');
+            game.load.image('restartHover', 'assets/restartHover.png');
+            game.load.image('newCharacterHover', 'assets/newCharacterHover.png');
             break;
     }
 }

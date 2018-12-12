@@ -24,5 +24,6 @@ let abilityGroup;
 let abilityCollisionGroup;
 
 let restartButton;
+let newCharacterButton;
 
 game.state.start('Menu');
