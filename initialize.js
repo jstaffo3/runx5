@@ -22,7 +22,11 @@ let enemy1;
 let enemy2;
 let abilityGroup;
 let abilityCollisionGroup;
-
+let healthBarBorder;
+let healthBar;
+let healthWidth = 400;
+let healthHeight = 30;
+let healthLocation = 15;
 let restartButton;
 let newCharacterButton;
 

@@ -63,24 +63,35 @@ let Game = {
             right: game.input.keyboard.addKey(Phaser.Keyboard.D),
         };
 
-        //Spawn Toals
+        //Spawn Entities
         game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
         game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
 
+        //Health Bar
+        let healthCanvas = game.add.bitmapData(healthWidth+20,healthHeight+20);
+        healthCanvas.ctx.rect(healthLocation,healthLocation,healthWidth,healthHeight);
+        healthCanvas.ctx.fillStyle = '#3fd5cb';
+        healthCanvas.ctx.fill();
+        let healthCanvasBorder = game.add.bitmapData(healthWidth+20,healthHeight+20);
+        healthCanvasBorder.ctx.rect(healthLocation,healthLocation,healthWidth,healthHeight);
+        healthCanvasBorder.ctx.strokeStyle = '#000000';
+        healthCanvasBorder.ctx.stroke();
+        healthBar = game.add.sprite(healthLocation, healthLocation, healthCanvas);
+        healthBarBorder = game.add.sprite(healthLocation, healthLocation, healthCanvasBorder);
+        healthBarBorder.fixedToCamera = true;
+        healthBar.fixedToCamera = true;
+        healthBar.alpha = 0.85;
     },
 
     update: function() {
-
         player.move();
-        toalMinionGroup.children.forEach(x => moveToward(x, player))
-
-
-
+        toalMinionGroup.children.forEach(x => moveToward(x, player));
         toalMinionGroup.children.forEach(x => moveToward(x, player));
         score++;
+        healthBar.width = player.health/player.healthMax * healthWidth;
+
     },
     render: function() {
-		game.debug.text(`Current player health: ${player.health}`, 20, 20);
         game.debug.text(`Score: ${score}`, 670, 20);
     },
     endGame: function() {

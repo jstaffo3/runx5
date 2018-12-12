@@ -4,7 +4,7 @@ class ToalMinion {
 		this.sprite = toalMinionGroup.create(game.world.randomX, game.world.randomY, 'toal');
         this.sprite.speed = Math.random() * 150 + 150;
         centerSprite(this.sprite);
-        this.sprite.scale.setTo(size);
+
         scaleSprite(this.sprite, size);
         this.sprite.body.fixedRotation = true;
 
