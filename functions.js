@@ -19,10 +19,19 @@ function abilityCollision(object)
 {
     return function()
     {
-        //initiate powerup
-        //delete image of egg
+        if (scarecrowActive === 0) {
+            this.key = 'scarecrow';
+            scarecrowActive = 1;
+            game.time.events.add(Phaser.Timer.SECOND * 5, endScarecrow, this);
+            //initiate powerup
+            //delete image of egg
+        }
     }
 }
+function endScarecrow() {
+
+}
+
 function preloadAssets (set) {
     switch (set) {
         case 'all':
