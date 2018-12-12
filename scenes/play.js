@@ -76,8 +76,14 @@ let Game = {
 
 
 
+        toalMinionGroup.children.forEach(x => moveToward(x, player));
+        score++;
     },
     render: function() {
 		game.debug.text(`Current player health: ${player.health}`, 20, 20);
+        game.debug.text(`Score: ${score}`, 670, 20);
+    },
+    endGame: function() {
+        game.state.start('Death');
     }
 };

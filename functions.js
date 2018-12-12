@@ -2,12 +2,16 @@ function centerSprite(object) {
     object.anchor.x = 0.5;
     object.anchor.y = 0.5;
 }
+
 function toalCollision(object) {
     return function() {
         player.health -= 1;
         //toalMinionGroup.remove(object);
         object.sprite.kill();
         //toalMinionGroup.children.splice(toalMinionGroup.children.indexOf(object),1);
+        if (player.health <= 0) {
+            Game.endGame();
+        }
     }
 }
 
@@ -34,15 +38,19 @@ function preloadAssets (set) {
             game.load.image('egg', 'assets/yoshiegg.png');
 
             break;
-        case 'gameOver':
+        case 'Death':
             game.load.image('background', 'assets/grass.png');
+            game.load.image('restart', 'assets/restartBorder.png');
+            game.load.image('fosse', 'assets/fosse.png');
             break;
     }
 }
+
 function scaleSprite(object, scale) {
     object.scale.setTo(scale);
     object.body.setRectangle(object.width, object.height);
 }
+
 function moveToward(follower, leader) {
     const dx = leader.sprite.x - follower.x;
     const dy = leader.sprite.y - follower.y;
@@ -51,8 +59,9 @@ function moveToward(follower, leader) {
     follower.body.moveRight((dx / magnitude) * follower.speed);
     follower.body.moveDown((dy / magnitude) * follower.speed);
 }
+
 function spawnToals() {
-    for (let i=0;i<10;i++) {
+    for (let i = 0; i < 10; i++) {
         new ToalMinion();
     }
     game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);

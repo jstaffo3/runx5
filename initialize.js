@@ -23,5 +23,6 @@ let enemy2;
 let abilityGroup;
 let abilityCollisionGroup;
 
+let restartButton;
 
 game.state.start('Menu');
