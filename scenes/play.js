@@ -23,7 +23,6 @@ let Game = {
         toalMinionsCollisionGroup = game.physics.p2.createCollisionGroup();
         abilityCollisionGroup = game.physics.p2.createCollisionGroup();
         bossEnemyCollisionGroup = game.physics.p2.createCollisionGroup();
-        boostPadCollisionGroup = game.physics.p2.createCollisionGroup();
 
         game.physics.p2.updateBoundsCollisionGroup();
 
@@ -41,9 +40,6 @@ let Game = {
         bossEnemyGroup.enableBody = true;
         bossEnemyGroup.physicsBodyType = Phaser.Physics.P2JS;
 
-        boostPadGroup.enableBody = true;
-        boostPadGroup.physicsBodyType = Phaser.Physics.P2JS;
-
         game.physics.p2.enable(player.sprite, false);
 
         player.sprite.body.fixedRotation = true;
@@ -52,9 +48,6 @@ let Game = {
         player.sprite.body.collides(toalMinionsCollisionGroup);
         player.sprite.body.collides(abilityCollisionGroup);
         player.sprite.body.collides(bossEnemyCollisionGroup);
-        player.sprite.body.collides(boostPadCollisionGroup);
-
-
 
         //Camera
         game.camera.follow(player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
@@ -90,6 +83,7 @@ let Game = {
         player.move();
         toalMinionGroup.children.forEach(x => moveToward(x, scarecrowActive ? scarecrow : player));
         bossEnemyGroup.children.forEach(x => moveToward(x,  scarecrowActive ? scarecrow : player));
+        boostPadGroup.children.forEach(x => checkPlayerBoost(x));
         score++;
         crop(healthBarFill, healthBar.width);
     },

@@ -20,6 +20,17 @@ function spawnBossEnemy() {
     game.time.events.add(Phaser.Timer.SECOND * 15, spawnBossEnemy, this);
 }
 
+function checkPlayerBoost(pad) {
+    if (Phaser.Rectangle.intersects(player.sprite.getBounds(), pad.getBounds())) {
+        player.speedModifier = 1.5;
+        pad.loadTexture('boostPadPressed');
+        game.time.events.add(Phaser.Timer.SECOND * 5, function () {
+            player.speedModifier = 1;
+            pad.loadTexture('boostPad');
+        }, this);
+    }
+}
+
 function abilityCollision(object)
 {
     return function()
