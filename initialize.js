@@ -25,11 +25,11 @@ let restartButton;
 let newCharacterButton;
 let scarecrowActive = false;
 let scarecrow;
-let bossSpawnerArray = ['megan','john','fosse','matt','kai'];
+let characterArray = ['megan','john','fosse','matt','kai'];
+let bossSpawnerArray;
 let boostPad;
 let boostPadPressed;
 let boostPadGroup;
-let boostPadCollisionGroup;
 let boostPadLocation;
 
 

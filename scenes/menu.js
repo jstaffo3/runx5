@@ -23,6 +23,7 @@ let Menu = {
   startGame: function (buttonName) {
       return function () {
           characterSelection = buttonName;
+          bossSpawnerArray = characterArray.filter(x => x !== characterSelection);
           game.state.start('Game');
       }
   }
