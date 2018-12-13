@@ -21,7 +21,8 @@ let Game = {
         playerCollisionGroup = game.physics.p2.createCollisionGroup();
         toalMinionsCollisionGroup = game.physics.p2.createCollisionGroup();
         abilityCollisionGroup = game.physics.p2.createCollisionGroup();
-        //let bossEnemiesCollisionGroup = game.physics.p2.createCollisionGroup();
+
+        bossEnemyCollisionGroup = game.physics.p2.createCollisionGroup();
         game.physics.p2.updateBoundsCollisionGroup();
 
         toalMinionGroup = game.add.group();
@@ -33,8 +34,8 @@ let Game = {
 
         abilityGroup.enableBody = true;
         abilityGroup.physicsBodyType = Phaser.Physics.P2JS;
-        //bossEnemyGroup.enableBody = true;
-        //bossEnemyGroup.physicsBodyType = Phaser.Physics.P2JS;
+        bossEnemyGroup.enableBody = true;
+        bossEnemyGroup.physicsBodyType = Phaser.Physics.P2JS;
 
         game.physics.p2.enable(player.sprite, false);
 
@@ -42,10 +43,10 @@ let Game = {
         player.sprite.body.setCollisionGroup(playerCollisionGroup);
 
 
-        //bossEnemyGroup.body.setCollisionGroup(bossEnemiesCollisionGroup);
-        //toalMinion.body.collides(toalMinionsCollisionGroup, bossEnemiesCollisionGroup);
-        //bossEnemy.body.collides(bossEnemiesCollisionGroup, playerCollisionGroup);
-        //bossEnemy.body.collides(bossEnemiesCollisionGroup, toalMinionsCollisionGroup);
+        bossEnemyGroup.body.setCollisionGroup(bossEnemyCollisionGroup);
+        toalMinionGroup.body.collides(toalMinionsCollisionGroup, bossEnemyCollisionGroup);
+        bossEnemyGroup.body.collides(bossEnemyCollisionGroup, playerCollisionGroup);
+        bossEnemyGroup.body.collides(bossEnemyCollisionGroup, toalMinionsCollisionGroup);
         player.sprite.body.collides(toalMinionsCollisionGroup);
         player.sprite.body.collides(abilityCollisionGroup);
 
@@ -78,6 +79,7 @@ let Game = {
     update: function () {
         player.move();
         toalMinionGroup.children.forEach(x => moveToward(x, scarecrowActive ? scarecrow : player));
+        bossEnemynGroup.children.forEach(x => moveToward(x,  player));
         score++;
         crop(healthBarFill, healthBar.width);
     },
