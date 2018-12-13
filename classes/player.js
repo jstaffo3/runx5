@@ -5,7 +5,7 @@ class Player {
         centerSprite(this.sprite);
         this.health = 100;
         this.healthMax = 100;
-        this.speedBase = 300;
+        this.speedBase = 310;
         this.speedModifier = 1;
         this.diagonalSpeedModifier = 1;
     }
