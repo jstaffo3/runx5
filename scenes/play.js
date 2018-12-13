@@ -77,7 +77,7 @@ let Game = {
 
     update: function () {
         player.move();
-        toalMinionGroup.children.forEach(x => moveToward(x, scarecrowActive === 0 ? player : scarecrow));
+        toalMinionGroup.children.forEach(x => moveToward(x, scarecrowActive ? scarecrow : player));
         score++;
         crop(healthBarFill, healthBar.width);
     },
