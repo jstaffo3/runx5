@@ -57,13 +57,15 @@ function preloadAssets (set) {
             game.load.image('egg', 'assets/yoshiegg.png');
             game.load.image('healthBar', 'assets/healthBar.png');
             game.load.image('healthBarFill', 'assets/healthBarFill.png');
+            game.load.image('menuScreen', 'assets/MenuScreen.png');
             break;
         case 'death':
             game.load.image('background', 'assets/grass.png');
             game.load.image('restart', 'assets/restart.png');
             game.load.image('newCharacter', 'assets/newCharacter.png');
-            game.load.image('restartHover', 'assets/restartHover.png');
-            game.load.image('newCharacterHover', 'assets/newCharacterHover.png');
+            //game.load.image('restartHover', 'assets/restartHover.png');
+            //game.load.image('newCharacterHover', 'assets/newCharacterHover.png');
+            game.load.image('gameOverScreen', 'assets/GameOverScreen.png');
             break;
     }
 }

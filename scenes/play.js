@@ -1,8 +1,8 @@
 let Game = {
-    preload: function() {
+    preload: function () {
         preloadAssets('all');
     },
-    create: function() {
+    create: function () {
         //Reset Variables
         score = 0;
 
@@ -12,7 +12,6 @@ let Game = {
 
         //Create Player Entity
         player = new Player(characterSelection);
-
 
 
         //Setup P2JS and Collisions
@@ -76,16 +75,16 @@ let Game = {
 
     },
 
-    update: function() {
+    update: function () {
         player.move();
         toalMinionGroup.children.forEach(x => moveToward(x, scarecrowActive === 0 ? player : scarecrow));
         score++;
         crop(healthBarFill, healthBar.width);
     },
-    render: function() {
-        game.debug.text(`Score: ${score}`, 670, 20);
+    render: function () {
+        game.debug.text(`Score: ${score}`, 670, 20, {font: '80px Courier'});
     },
-    endGame: function() {
+    endGame: function () {
         game.state.start('Death');
     }
 };
