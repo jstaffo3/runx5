@@ -5,16 +5,19 @@ class Player {
         centerSprite(this.sprite);
         this.health = 100;
         this.healthMax = 100;
+        this.speedBase = 300;
+        this.speedModifier = 1;
+        this.diagonalSpeedModifier = 1;
     }
     move() {
 		//let speed = Math.hypot(this.sprite.body.velocity.x,this.sprite.body.velocity.y);
         this.sprite.body.setZeroVelocity();
-        playerSpeedModifier = 1;
-        
         if (((cursors.up.isDown || wasd.up.isDown)||(cursors.down.isDown || wasd.down.isDown))&&((cursors.left.isDown || wasd.left.isDown)||(cursors.right.isDown || wasd.right.isDown))){
-			playerSpeedModifier = Math.cos(Math.PI/4);
-		}
-		let speed = playerSpeedBase * playerSpeedModifier;
+			this.diagonalSpeedModifier = Math.cos(Math.PI/4);
+		} else {
+            this.diagonalSpeedModifier = 1;
+        }
+		let speed = this.speedBase * this.speedModifier * this.diagonalSpeedModifier;
         
         if (cursors.up.isDown || wasd.up.isDown) {
 			this.sprite.body.velocity.y = -speed;

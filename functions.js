@@ -15,6 +15,11 @@ function toalCollision(object) {
     }
 }
 
+function spawnBossEnemy() {
+    new BossEnemy();
+    game.time.events.add(Phaser.Timer.SECOND * 15, spawnBossEnemy, this);
+}
+
 function abilityCollision(object)
 {
     return function()
@@ -59,6 +64,14 @@ function scaleSprite(object, scale) {
     object.scale.setTo(scale);
     if (object.body !== null) {
         object.body.setRectangle(object.width, object.height);
+    }
+}
+
+function bossEnemyCollision(object) {
+    return function() {
+        player.speedModifier = 0.85;
+        game.time.events.add(Phaser.Timer.SECOND * 5, function() {player.speedModifier = 1;}, this);
+        object.deathSequence();
     }
 }
 
