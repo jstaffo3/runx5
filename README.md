@@ -8,6 +8,7 @@ Score points by surviving and eliminating enemies.
 <ul>
   <li>Move with WASD or the arrow keys</li>
   <li>Run over power-ups to activate them</li>
+</ul>  
 <h5>Game creators:</h5>
 <ul>
   <li>John Stafford</li>
