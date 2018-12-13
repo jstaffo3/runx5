@@ -16,6 +16,7 @@ let Death = {
     render: function() {},
 
     restartGame: function (buttonName) {
+        scarecrowActive = false;
         return function () {
             if (buttonName === 'restart') {
                 game.state.start('Game');

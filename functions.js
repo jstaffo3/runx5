@@ -19,10 +19,10 @@ function abilityCollision(object)
 {
     return function()
     {
-        if (scarecrowActive === 0) {
+        if (!scarecrowActive) {
             scarecrow = new Scarecrow(object.sprite.x, object.sprite.y);
             object.sprite.kill();
-            scarecrowActive = 1;
+            scarecrowActive = true;
             game.time.events.add(Phaser.Timer.SECOND * 5, endScarecrow, this);
         }
     }
@@ -38,7 +38,7 @@ function blowUpScarecrow() {
         scaleSprite(scarecrow.sprite, scarecrow.size);
         game.time.events.add(Phaser.Timer.SECOND * 0.1, blowUpScarecrow, this);
     } else {
-        scarecrowActive = 0;
+        scarecrowActive = false;
         scarecrow.sprite.kill();
     }
 }
