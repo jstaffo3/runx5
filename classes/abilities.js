@@ -38,14 +38,11 @@ class Scarecrow {
     }
 }
 class BoostPad {
-    constructor(){
+    constructor() {
+        this.size = 0.25;
         boostPadLocation = game.world.width - 500;
         this.sprite = boostPadGroup.create(boostPadLocation, boostPadLocation, 'boostPad');
-        this.sprite.body.setCollisionGroup(boostPadCollisionGroup);
-        this.sprite.body.collides(playerCollisionGroup, this.pressedSequence, this);
-    }
-    pressedSequence(){
-            this.sprite.loadTexture('boostPadPressed');
-            console.log('Hey');
+        scaleSprite(this.sprite, this.size);
+        centerSprite(this.sprite);
     }
 }
