@@ -19,11 +19,11 @@ class Ability {
 }
 class Scarecrow {
     constructor(x, y) {
-        let size = 0.5;
+        this.size = 0.5;
         this.x = x;
         this.y = y;
         this.sprite = game.add.sprite(this.x, this.y, 'scarecrow');
         centerSprite(this.sprite);
-        scaleSprite(this.sprite, size);
+        scaleSprite(this.sprite, this.size);
     }
 }

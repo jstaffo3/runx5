@@ -28,8 +28,19 @@ function abilityCollision(object)
     }
 }
 function endScarecrow() {
-    scarecrowActive = 0;
-    scarecrow.sprite.kill();
+    game.time.events.add(Phaser.Timer.SECOND * 0.1, blowUpScarecrow, this);
+}
+
+function blowUpScarecrow() {
+    if (scarecrow.size <= 1.5) {
+        scarecrow.size += .05;
+        centerSprite(scarecrow.sprite);
+        scaleSprite(scarecrow.sprite, scarecrow.size);
+        game.time.events.add(Phaser.Timer.SECOND * 0.1, blowUpScarecrow, this);
+    } else {
+        scarecrowActive = 0;
+        scarecrow.sprite.kill();
+    }
 }
 
 function preloadAssets (set) {
