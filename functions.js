@@ -15,6 +15,11 @@ function toalCollision(object) {
     }
 }
 
+function spawnBossEnemy() {
+    new BossEnemy();
+    game.time.events.add(Phaser.Timer.SECOND * 15, spawnBossEnemy, this);
+}
+
 function abilityCollision(object)
 {
     return function()

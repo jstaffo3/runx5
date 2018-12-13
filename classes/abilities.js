@@ -1,5 +1,4 @@
 class Ability {
-
     constructor() {
 
         const size = 0.2;
@@ -31,7 +30,6 @@ class Scarecrow {
             scarecrow.size += .05;
             scaleSprite(scarecrow.sprite, scarecrow.size);
             centerSprite(scarecrow.sprite);
-            console.log(this);
             game.time.events.add(Phaser.Timer.SECOND * 0.1, scarecrow.deathSequence, this);
         } else {
             scarecrowActive = false;

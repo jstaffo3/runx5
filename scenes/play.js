@@ -21,7 +21,6 @@ let Game = {
         playerCollisionGroup = game.physics.p2.createCollisionGroup();
         toalMinionsCollisionGroup = game.physics.p2.createCollisionGroup();
         abilityCollisionGroup = game.physics.p2.createCollisionGroup();
-
         bossEnemyCollisionGroup = game.physics.p2.createCollisionGroup();
         game.physics.p2.updateBoundsCollisionGroup();
 
@@ -42,14 +41,9 @@ let Game = {
         player.sprite.body.fixedRotation = true;
         player.sprite.body.setCollisionGroup(playerCollisionGroup);
 
-
-        bossEnemyGroup.body.setCollisionGroup(bossEnemyCollisionGroup);
-        toalMinionGroup.body.collides(toalMinionsCollisionGroup, bossEnemyCollisionGroup);
-        bossEnemyGroup.body.collides(bossEnemyCollisionGroup, playerCollisionGroup);
-        bossEnemyGroup.body.collides(bossEnemyCollisionGroup, toalMinionsCollisionGroup);
         player.sprite.body.collides(toalMinionsCollisionGroup);
         player.sprite.body.collides(abilityCollisionGroup);
-
+        player.sprite.body.collides(bossEnemyCollisionGroup);
 
         //Camera
         game.camera.follow(player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
@@ -65,7 +59,8 @@ let Game = {
 
         //Spawn Entities
         game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
-        game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
+        game.time.events.add(Phaser.Timer.SECOND * 10, spawnAbility, this);
+        game.time.events.add(Phaser.Timer.SECOND * 15, spawnBossEnemy, this);
 
         //Health Bar
         healthBar = game.add.sprite(healthLocation[0], healthLocation[1], 'healthBar');
@@ -79,7 +74,7 @@ let Game = {
     update: function () {
         player.move();
         toalMinionGroup.children.forEach(x => moveToward(x, scarecrowActive ? scarecrow : player));
-        bossEnemynGroup.children.forEach(x => moveToward(x,  player));
+        bossEnemyGroup.children.forEach(x => moveToward(x,  scarecrowActive ? scarecrow : player));
         score++;
         crop(healthBarFill, healthBar.width);
     },
