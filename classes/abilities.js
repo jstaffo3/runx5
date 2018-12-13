@@ -26,4 +26,16 @@ class Scarecrow {
         centerSprite(this.sprite);
         scaleSprite(this.sprite, this.size);
     }
+    deathSequence() {
+        if (scarecrow.size <= 1.5) {
+            scarecrow.size += .05;
+            scaleSprite(scarecrow.sprite, scarecrow.size);
+            centerSprite(scarecrow.sprite);
+            console.log(this);
+            game.time.events.add(Phaser.Timer.SECOND * 0.1, scarecrow.deathSequence, this);
+        } else {
+            scarecrowActive = false;
+            scarecrow.sprite.kill();
+        }
+    }
 }

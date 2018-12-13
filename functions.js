@@ -23,23 +23,8 @@ function abilityCollision(object)
             scarecrow = new Scarecrow(object.sprite.x, object.sprite.y);
             object.sprite.kill();
             scarecrowActive = true;
-            game.time.events.add(Phaser.Timer.SECOND * 5, endScarecrow, this);
+            game.time.events.add(Phaser.Timer.SECOND * 5, scarecrow.deathSequence, this);
         }
-    }
-}
-function endScarecrow() {
-    game.time.events.add(Phaser.Timer.SECOND * 0.1, blowUpScarecrow, this);
-}
-
-function blowUpScarecrow() {
-    if (scarecrow.size <= 1.5) {
-        scarecrow.size += .05;
-        centerSprite(scarecrow.sprite);
-        scaleSprite(scarecrow.sprite, scarecrow.size);
-        game.time.events.add(Phaser.Timer.SECOND * 0.1, blowUpScarecrow, this);
-    } else {
-        scarecrowActive = false;
-        scarecrow.sprite.kill();
     }
 }
 
@@ -96,7 +81,6 @@ function spawnToals() {
 function spawnAbility() {
     new Ability();
     game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
-
 }
 
 function crop(object, initialWidth) {

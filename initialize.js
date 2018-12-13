@@ -27,5 +27,6 @@ let restartButton;
 let newCharacterButton;
 let scarecrowActive = false;
 let scarecrow;
+let bossSpawnerArray = ['megan','john','fosse','matt','kai'];
 
 game.state.start('Menu');
