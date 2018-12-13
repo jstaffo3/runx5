@@ -25,5 +25,7 @@ let healthBarFill;
 let healthLocation = [15, 15];
 let restartButton;
 let newCharacterButton;
+let scarecrowActive = 0;
+let scarecrow;
 
 game.state.start('Menu');

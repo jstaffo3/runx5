@@ -1,6 +1,6 @@
 let Death = {
     preload: function() {
-        preloadAssets('Death');
+        preloadAssets('death');
     },
     create: function() {
         game.add.sprite(0, 0, 'background');

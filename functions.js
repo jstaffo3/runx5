@@ -20,16 +20,15 @@ function abilityCollision(object)
     return function()
     {
         if (scarecrowActive === 0) {
-            this.key = 'scarecrow';
+            scarecrow = new Scarecrow(player.x, player.y);
+            object.sprite.kill();
             scarecrowActive = 1;
             game.time.events.add(Phaser.Timer.SECOND * 5, endScarecrow, this);
-            //initiate powerup
-            //delete image of egg
         }
     }
 }
 function endScarecrow() {
-
+    scarecrowActive = 0;
 }
 
 function preloadAssets (set) {
@@ -47,7 +46,7 @@ function preloadAssets (set) {
             game.load.image('healthBar', 'assets/healthBar.png');
             game.load.image('healthBarFill', 'assets/healthBarFill.png');
             break;
-        case 'Death':
+        case 'death':
             game.load.image('background', 'assets/grass.png');
             game.load.image('restart', 'assets/restart.png');
             game.load.image('newCharacter', 'assets/newCharacter.png');
@@ -76,11 +75,10 @@ function spawnToals() {
         new ToalMinion();
     }
     game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
-
 }
-function spawnAbility() {
-        new Ability();
 
+function spawnAbility() {
+    new Ability();
     game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
 
 }
@@ -89,6 +87,3 @@ function crop(object, initialWidth) {
     let cropRect = new Phaser.Rectangle(0, 0, player.health/player.healthMax*initialWidth, object.height);
     object.crop(cropRect);
 }
-
-
-
