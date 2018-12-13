@@ -26,5 +26,11 @@ let newCharacterButton;
 let scarecrowActive = false;
 let scarecrow;
 let bossSpawnerArray = ['megan','john','fosse','matt','kai'];
+let boostPad;
+let boostPadPressed;
+let boostPadGroup;
+let boostPadCollisionGroup;
+let boostPadLocation;
+
 
 game.state.start('Menu');

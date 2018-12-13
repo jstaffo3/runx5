@@ -37,3 +37,15 @@ class Scarecrow {
         }
     }
 }
+class BoostPad {
+    constructor(){
+        boostPadLocation = game.world.width - 500;
+        this.sprite = boostPadGroup.create(boostPadLocation, boostPadLocation, 'boostPad');
+        this.sprite.body.setCollisionGroup(boostPadCollisionGroup);
+        this.sprite.body.collides(playerCollisionGroup, this.pressedSequence, this);
+    }
+    pressedSequence(){
+            this.sprite.loadTexture('boostPadPressed');
+            console.log('Hey');
+    }
+}

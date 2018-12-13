@@ -18,23 +18,31 @@ let Game = {
         game.physics.startSystem(Phaser.Physics.P2JS);
         game.physics.p2.setImpactEvents(true);
         game.physics.p2.restitution = 0.8;
+
         playerCollisionGroup = game.physics.p2.createCollisionGroup();
         toalMinionsCollisionGroup = game.physics.p2.createCollisionGroup();
         abilityCollisionGroup = game.physics.p2.createCollisionGroup();
         bossEnemyCollisionGroup = game.physics.p2.createCollisionGroup();
+        boostPadCollisionGroup = game.physics.p2.createCollisionGroup();
+
         game.physics.p2.updateBoundsCollisionGroup();
 
         toalMinionGroup = game.add.group();
         bossEnemyGroup = game.add.group();
         abilityGroup = game.add.group();
+        boostPadGroup = game.add.group();
 
         toalMinionGroup.enableBody = true;
         toalMinionGroup.physicsBodyType = Phaser.Physics.P2JS;
 
         abilityGroup.enableBody = true;
         abilityGroup.physicsBodyType = Phaser.Physics.P2JS;
+
         bossEnemyGroup.enableBody = true;
         bossEnemyGroup.physicsBodyType = Phaser.Physics.P2JS;
+
+        boostPadGroup.enableBody = true;
+        boostPadGroup.physicsBodyType = Phaser.Physics.P2JS;
 
         game.physics.p2.enable(player.sprite, false);
 
@@ -44,6 +52,9 @@ let Game = {
         player.sprite.body.collides(toalMinionsCollisionGroup);
         player.sprite.body.collides(abilityCollisionGroup);
         player.sprite.body.collides(bossEnemyCollisionGroup);
+        player.sprite.body.collides(boostPadCollisionGroup);
+
+
 
         //Camera
         game.camera.follow(player.sprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
@@ -57,6 +68,9 @@ let Game = {
             right: game.input.keyboard.addKey(Phaser.Keyboard.D),
         };
 
+        //Boost Pad
+        new BoostPad();
+
         //Spawn Entities
         game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
         game.time.events.add(Phaser.Timer.SECOND * 10, spawnAbility, this);
@@ -68,6 +82,7 @@ let Game = {
         healthBarFill = game.add.sprite(healthLocation[0], healthLocation[1], 'healthBarFill');
         healthBarFill.fixedToCamera = true;
         healthBarFill.alpha = 0.9;
+
 
     },
 

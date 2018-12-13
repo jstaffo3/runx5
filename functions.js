@@ -48,6 +48,8 @@ function preloadAssets (set) {
             game.load.image('healthBar', 'assets/healthBar.png');
             game.load.image('healthBarFill', 'assets/healthBarFill.png');
             game.load.image('menuScreen', 'assets/MenuScreen.png');
+            game.load.image('boostPad', 'assets/boostPad.png');
+            game.load.image('boostPadPressed', 'assets/boostPadPressed.png');
             break;
         case 'death':
             game.load.image('background', 'assets/grass.png');
