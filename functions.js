@@ -70,12 +70,14 @@ function scaleSprite(object, scale) {
 }
 
 function moveToward(follower, leader) {
-    const dx = leader.sprite.x - follower.x;
-    const dy = leader.sprite.y - follower.y;
-    const magnitude = Math.hypot(dx, dy);
-    follower.body.setZeroVelocity();
-    follower.body.moveRight((dx / magnitude) * follower.speed);
-    follower.body.moveDown((dy / magnitude) * follower.speed);
+    if (follower.follow === true) {
+        const dx = leader.sprite.x - follower.x;
+        const dy = leader.sprite.y - follower.y;
+        const magnitude = Math.hypot(dx, dy);
+        follower.body.setZeroVelocity();
+        follower.body.moveRight((dx / magnitude) * follower.speed);
+        follower.body.moveDown((dy / magnitude) * follower.speed);
+    }
 }
 
 function spawnToals() {

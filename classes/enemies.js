@@ -3,6 +3,7 @@ class ToalMinion {
 		this.size = Math.random() * .15 + 0.125;
 		this.sprite = toalMinionGroup.create(game.world.randomX, game.world.randomY, 'toal');
         this.sprite.speed = Math.random() * 150 + 150;
+        this.sprite.follow = true;
         centerSprite(this.sprite);
         scaleSprite(this.sprite, this.size);
         this.sprite.body.fixedRotation = true;
@@ -31,6 +32,7 @@ class BossEnemy {
         this.size = 1.5;
         this.name = bossSpawnerArray[Math.floor(Math.random()*(bossSpawnerArray.length+1))];
         this.sprite = bossEnemyGroup.create(game.world.randomX, game.world.randomY, this.name);
+        this.sprite.follow = true;
         this.sprite.speed = Math.random() * 100 + 220;
         centerSprite(this.sprite);
         scaleSprite(this.sprite, this.size);
@@ -38,21 +40,26 @@ class BossEnemy {
 
         //Physics
         this.sprite.body.setCollisionGroup(bossEnemyCollisionGroup);
-        this.sprite.body.collides(playerCollisionGroup, this.playerCollision(this), this);
+        this.sprite.body.collides(playerCollisionGroup, this.playerCollision(), this);
         this.sprite.body.collides([toalMinionsCollisionGroup, bossEnemyCollisionGroup]);
     }
-    playerCollision(object) {
+    playerCollision() {
         return function() {
-            player.speedModifier = 0.85;
+            player.health -= 10;
+            player.speedModifier = 0.825;
             game.time.events.add(Phaser.Timer.SECOND * 5, function() {player.speedModifier = 1;}, this);
-            if (object.size >= 0) {
-                object.size -= .05;
-                scaleSprite(object.sprite, object.size);
-                centerSprite(object.sprite);
-                game.time.events.add(Phaser.Timer.SECOND * 0.05, object.deathSequence, this);
-            } else {
-                object.sprite.kill();
-            }
+            this.sprite.follow = false;
+            this.shrink();
+        }
+    }
+    shrink() {
+        if (this.size >= 0) {
+            this.size -= .01;
+            scaleSprite(this.sprite, this.size);
+            centerSprite(this.sprite);
+            game.time.events.add(Phaser.Timer.SECOND * 0.01, this.shrink, this);
+        } else {
+            this.sprite.kill();
         }
     }
 }
