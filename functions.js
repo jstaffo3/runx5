@@ -67,14 +67,6 @@ function scaleSprite(object, scale) {
     }
 }
 
-function bossEnemyCollision(object) {
-    return function() {
-        player.speedModifier = 0.85;
-        game.time.events.add(Phaser.Timer.SECOND * 5, function() {player.speedModifier = 1;}, this);
-        object.deathSequence();
-    }
-}
-
 function moveToward(follower, leader) {
     const dx = leader.sprite.x - follower.x;
     const dy = leader.sprite.y - follower.y;

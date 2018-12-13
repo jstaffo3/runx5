@@ -38,17 +38,21 @@ class BossEnemy {
 
         //Physics
         this.sprite.body.setCollisionGroup(bossEnemyCollisionGroup);
-        this.sprite.body.collides(playerCollisionGroup, bossEnemyCollision(this), this);
+        this.sprite.body.collides(playerCollisionGroup, this.playerCollision(this), this);
         this.sprite.body.collides([toalMinionsCollisionGroup, bossEnemyCollisionGroup]);
     }
-    deathSequence(object) {
-        if (object.size >=) {
-            object.size -= .05;
-            scaleSprite(object.sprite, object.size);
-            centerSprite(object.sprite);
-            game.time.events.add(Phaser.Timer.SECOND * 0.05, object.deathSequence, this);
-        } else {
-            object.sprite.kill();
+    playerCollision(object) {
+        return function() {
+            player.speedModifier = 0.85;
+            game.time.events.add(Phaser.Timer.SECOND * 5, function() {player.speedModifier = 1;}, this);
+            if (object.size >= 0) {
+                object.size -= .05;
+                scaleSprite(object.sprite, object.size);
+                centerSprite(object.sprite);
+                game.time.events.add(Phaser.Timer.SECOND * 0.05, object.deathSequence, this);
+            } else {
+                object.sprite.kill();
+            }
         }
     }
 }
