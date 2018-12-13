@@ -20,7 +20,7 @@ function abilityCollision(object)
     return function()
     {
         if (scarecrowActive === 0) {
-            scarecrow = new Scarecrow(player.x, player.y);
+            scarecrow = new Scarecrow(object.sprite.x, object.sprite.y);
             object.sprite.kill();
             scarecrowActive = 1;
             game.time.events.add(Phaser.Timer.SECOND * 5, endScarecrow, this);
@@ -29,6 +29,7 @@ function abilityCollision(object)
 }
 function endScarecrow() {
     scarecrowActive = 0;
+    scarecrow.sprite.kill();
 }
 
 function preloadAssets (set) {
@@ -58,7 +59,9 @@ function preloadAssets (set) {
 
 function scaleSprite(object, scale) {
     object.scale.setTo(scale);
-    object.body.setRectangle(object.width, object.height);
+    if (object.body !== null) {
+        object.body.setRectangle(object.width, object.height);
+    }
 }
 
 function moveToward(follower, leader) {
