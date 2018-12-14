@@ -11,11 +11,21 @@ class ToalMinion {
 		//Physics
 		this.sprite.body.setRectangle(this.size * 163, this.size * 202);
 		this.sprite.body.setCollisionGroup(toalMinionsCollisionGroup);
-		this.sprite.body.collides(playerCollisionGroup, toalCollision(this), this);
+		this.sprite.body.collides(playerCollisionGroup, this.toalCollision(this), this);
 		this.sprite.body.collides([toalMinionsCollisionGroup, bossEnemyCollisionGroup]);
 		
 		//Decay timer
 		game.time.events.add(Phaser.Timer.SECOND * 18, this.fade, this);
+	}
+	
+	toalCollision(object) {
+		return function () {
+			player.health -= 1;
+			object.sprite.kill();
+			if (player.health <= 0) {
+				Game.endGame();
+			}
+		}
 	}
 	
 	fade() {

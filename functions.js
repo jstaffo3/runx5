@@ -1,47 +1,3 @@
-function centerSprite(object) {
-	object.anchor.x = 0.5;
-	object.anchor.y = 0.5;
-}
-
-function toalCollision(object) {
-	return function () {
-		player.health -= 1;
-		//toalMinionGroup.remove(object);
-		object.sprite.kill();
-		//toalMinionGroup.children.splice(toalMinionGroup.children.indexOf(object),1);
-		if (player.health <= 0) {
-			Game.endGame();
-		}
-	}
-}
-
-function spawnBossEnemy() {
-	new BossEnemy();
-	game.time.events.add(Phaser.Timer.SECOND * 15, spawnBossEnemy, this);
-}
-
-function checkPlayerBoost(pad) {
-	if (Phaser.Rectangle.intersects(player.sprite.getBounds(), pad.getBounds())) {
-		player.speedModifier = 1.5;
-		pad.loadTexture('boostPadPressed');
-		game.time.events.add(Phaser.Timer.SECOND * 2, function () {
-			player.speedModifier = 1;
-			pad.loadTexture('boostPad');
-		}, this);
-	}
-}
-
-function abilityCollision(object) {
-	return function () {
-		if (!scarecrowActive) {
-			scarecrow = new Scarecrow(object.sprite.x, object.sprite.y);
-			object.sprite.kill();
-			scarecrowActive = true;
-			game.time.events.add(Phaser.Timer.SECOND * 5, scarecrow.deathSequence, this);
-		}
-	}
-}
-
 function preloadAssets(set) {
 	switch (set) {
 		case 'all':
@@ -68,6 +24,27 @@ function preloadAssets(set) {
 			//game.load.image('newCharacterHover', 'assets/newCharacterHover.png');
 			game.load.image('gameOverScreen', 'assets/GameOverScreen.png');
 			break;
+	}
+}
+
+function centerSprite(object) {
+	object.anchor.x = 0.5;
+	object.anchor.y = 0.5;
+}
+
+function spawnBossEnemy() {
+	new BossEnemy();
+	game.time.events.add(Phaser.Timer.SECOND * 15, spawnBossEnemy, this);
+}
+
+function checkPlayerBoost(pad) {
+	if (Phaser.Rectangle.intersects(player.sprite.getBounds(), pad.getBounds())) {
+		player.speedModifier = 1.5;
+		pad.loadTexture('boostPadPressed');
+		game.time.events.add(Phaser.Timer.SECOND * 2, function () {
+			player.speedModifier = 1;
+			pad.loadTexture('boostPad');
+		}, this);
 	}
 }
 
@@ -107,7 +84,7 @@ function crop(object, initialWidth) {
 }
 
 function placeBoostPads() {
-	const padCoorindates = [[200, 200], [1800, 200], [200, 1800], [1800, 1800]];
+	const padCoorindates = [[200, 200], [1800, 1800]];
 	for (let coordinates of padCoorindates) {
 		new BoostPad(coordinates[0], coordinates[1]);
 	}

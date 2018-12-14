@@ -11,9 +11,21 @@ class Ability {
 		this.sprite.body.fixedRotation = true;
 		this.sprite.body.setRectangle(size * 163, size * 202);
 		this.sprite.body.setCollisionGroup(abilityCollisionGroup);
-		this.sprite.body.collides(playerCollisionGroup, abilityCollision(this), this);
+		this.sprite.body.collides(playerCollisionGroup, this.abilityCollision(this), this);
 		this.sprite.body.collides(abilityCollisionGroup);
 		this.sprite.body.setZeroVelocity();
+	}
+	
+	
+	abilityCollision(object) {
+		return function () {
+			if (!scarecrowActive) {
+				scarecrow = new Scarecrow(object.sprite.x, object.sprite.y);
+				object.sprite.kill();
+				scarecrowActive = true;
+				game.time.events.add(Phaser.Timer.SECOND * 5, scarecrow.deathSequence, this);
+			}
+		}
 	}
 }
 
