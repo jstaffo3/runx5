@@ -107,3 +107,10 @@ function crop(object, initialWidth) {
     let cropRect = new Phaser.Rectangle(0, 0, player.health/player.healthMax*initialWidth, object.height);
     object.crop(cropRect);
 }
+
+function placeBoostPads(){
+    const padCoorindates = [[0,1000],[1000,0],[2000,1000],[1000,2000]];
+    for (let coordinates of padCoorindates){
+        new BoostPad(coordinates[0],coordinates[1]);
+    }
+}

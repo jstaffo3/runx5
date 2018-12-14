@@ -30,6 +30,7 @@ let Game = {
         bossEnemyGroup = game.add.group();
         abilityGroup = game.add.group();
         boostPadGroup = game.add.group();
+        healthBarGroup = game.add.group();
 
         toalMinionGroup.enableBody = true;
         toalMinionGroup.physicsBodyType = Phaser.Physics.P2JS;
@@ -62,17 +63,18 @@ let Game = {
         };
 
         //Boost Pad
-        new BoostPad();
-
+        //new BoostPad();
+        placeBoostPads();
+        
         //Spawn Entities
         game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
         game.time.events.add(Phaser.Timer.SECOND * 10, spawnAbility, this);
         game.time.events.add(Phaser.Timer.SECOND * 15, spawnBossEnemy, this);
 
         //Health Bar
-        healthBar = game.add.sprite(healthLocation[0], healthLocation[1], 'healthBar');
+        healthBar = healthBarGroup.create(healthLocation[0], healthLocation[1], 'healthBar');
         healthBar.fixedToCamera = true;
-        healthBarFill = game.add.sprite(healthLocation[0], healthLocation[1], 'healthBarFill');
+        healthBarFill = healthBarGroup.create(healthLocation[0], healthLocation[1], 'healthBarFill');
         healthBarFill.fixedToCamera = true;
         healthBarFill.alpha = 0.9;
 
@@ -81,11 +83,16 @@ let Game = {
 
     update: function () {
         player.move();
+        game.world.bringToTop(player.sprite);
+        game.world.bringToTop(toalMinionGroup);
+        game.world.bringToTop(bossEnemyGroup);
+        game.world.bringToTop(healthBarGroup);
         toalMinionGroup.children.forEach(x => moveToward(x, scarecrowActive ? scarecrow : player));
         bossEnemyGroup.children.forEach(x => moveToward(x,  scarecrowActive ? scarecrow : player));
         boostPadGroup.children.forEach(x => checkPlayerBoost(x));
         score++;
         crop(healthBarFill, healthBar.width);
+        
     },
     render: function () {
         game.debug.text(`Score: ${score}`, 670, 20, {font: '80px Courier'});
