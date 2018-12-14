@@ -1,8 +1,8 @@
 const game = new Phaser.Game(
-    800,
-    600,
-    Phaser.CANVAS,
-    'runx5'
+	800,
+	600,
+	Phaser.CANVAS,
+	'runx5'
 );
 game.state.add('Menu', Menu);
 game.state.add('Game', Game);
@@ -25,7 +25,7 @@ let restartButton;
 let newCharacterButton;
 let scarecrowActive = false;
 let scarecrow;
-let characterArray = ['megan','john','fosse','matt','kai'];
+let characterArray = ['megan', 'john', 'fosse', 'matt', 'kai'];
 let bossSpawnerArray;
 let boostPad;
 let boostPadPressed;
