@@ -11,7 +11,6 @@ class Player {
 	}
 	
 	move() {
-		//let speed = Math.hypot(this.sprite.body.velocity.x,this.sprite.body.velocity.y);
 		this.sprite.body.setZeroVelocity();
 		if (((cursors.up.isDown || wasd.up.isDown) || (cursors.down.isDown || wasd.down.isDown)) && ((cursors.left.isDown || wasd.left.isDown) || (cursors.right.isDown || wasd.right.isDown))) {
 			this.diagonalSpeedModifier = Math.cos(Math.PI / 4);

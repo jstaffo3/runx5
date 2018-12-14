@@ -13,7 +13,6 @@ let Game = {
 		//Create Player Entity
 		player = new Player(characterSelection);
 		
-		
 		//Setup P2JS and Collisions
 		game.physics.startSystem(Phaser.Physics.P2JS);
 		game.physics.p2.setImpactEvents(true);
@@ -63,7 +62,6 @@ let Game = {
 		};
 		
 		//Boost Pad
-		//new BoostPad();
 		placeBoostPads();
 		
 		//Spawn Entities
@@ -77,8 +75,6 @@ let Game = {
 		healthBarFill = healthBarGroup.create(healthLocation[0], healthLocation[1], 'healthBarFill');
 		healthBarFill.fixedToCamera = true;
 		healthBarFill.alpha = 0.9;
-		
-		
 	},
 	
 	update: function () {

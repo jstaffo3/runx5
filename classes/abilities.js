@@ -1,8 +1,6 @@
 class Ability {
 	constructor() {
-		
 		const size = 0.2;
-		
 		this.sprite = abilityGroup.create(game.world.randomX, game.world.randomY, 'egg');
 		centerSprite(this.sprite);
 		scaleSprite(this.sprite, size);
@@ -16,11 +14,11 @@ class Ability {
 		this.sprite.body.setZeroVelocity();
 	}
 	
-	
 	abilityCollision(object) {
 		return function () {
 			if (!scarecrowActive) {
 				scarecrow = new Scarecrow(object.sprite.x, object.sprite.y);
+				new Ability();
 				object.sprite.kill();
 				scarecrowActive = true;
 				game.time.events.add(Phaser.Timer.SECOND * 5, scarecrow.deathSequence, this);

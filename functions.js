@@ -74,8 +74,10 @@ function spawnToals() {
 }
 
 function spawnAbility() {
-	new Ability();
-	game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
+	for (let i = 0; i < 4; i++){
+		new Ability();
+	}
+	//game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
 }
 
 function crop(object, initialWidth) {
