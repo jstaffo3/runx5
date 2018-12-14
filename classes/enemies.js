@@ -47,9 +47,10 @@ class BossEnemy {
 	
 	playerCollision() {
 		return function () {
+			game.camera.flash(0xff0000, 500);
 			player.health -= 10;
-			player.speedModifier = 0.825;
-			game.time.events.add(Phaser.Timer.SECOND * 5, function () {
+			player.speedModifier = 0.65;
+			game.time.events.add(Phaser.Timer.SECOND * 2, function () {
 				player.speedModifier = 1;
 			}, this);
 			this.sprite.follow = false;
