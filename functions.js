@@ -24,7 +24,7 @@ function checkPlayerBoost(pad) {
     if (Phaser.Rectangle.intersects(player.sprite.getBounds(), pad.getBounds())) {
         player.speedModifier = 1.5;
         pad.loadTexture('boostPadPressed');
-        game.time.events.add(Phaser.Timer.SECOND * 5, function () {
+        game.time.events.add(Phaser.Timer.SECOND * 2, function () {
             player.speedModifier = 1;
             pad.loadTexture('boostPad');
         }, this);
@@ -109,7 +109,7 @@ function crop(object, initialWidth) {
 }
 
 function placeBoostPads(){
-    const padCoorindates = [[0,1000],[1000,0],[2000,1000],[1000,2000]];
+    const padCoorindates = [[200,200],[1800,200],[200,1800],[1800,1800]];
     for (let coordinates of padCoorindates){
         new BoostPad(coordinates[0],coordinates[1]);
     }

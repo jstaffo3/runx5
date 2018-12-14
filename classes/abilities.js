@@ -39,7 +39,7 @@ class Scarecrow {
 }
 class BoostPad {
     constructor(x, y) {
-        const angleToCenter = Math.atan2(y - game.world.centerY,game.world.centerX - x)*180/Math.PI + (game.world.centerX-x<0)?180:0;
+    	const angleToCenter = Math.atan2(y-game.world.centerY, x-game.world.centerX)*180/Math.PI - 90;
         this.size = 0.25;
         this.sprite = boostPadGroup.create(x, y, 'boostPad');
         this.sprite.angle = angleToCenter;
