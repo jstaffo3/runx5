@@ -111,36 +111,45 @@ function preloadAssets (set) {
 }
 
 function scaleSprite(object, scale) {
-    object.scale.setTo(scale);
-    if (object.body !== null) {
-        object.body.setRectangle(object.width, object.height);
-    }
+	object.scale.setTo(scale);
+	if (object.body !== null) {
+		object.body.setRectangle(object.width, object.height);
+	}
 }
 
 function moveToward(follower, leader) {
-    if (follower.follow === true) {
-        const dx = leader.sprite.x - follower.x;
-        const dy = leader.sprite.y - follower.y;
-        const magnitude = Math.hypot(dx, dy);
-        follower.body.setZeroVelocity();
-        follower.body.moveRight((dx / magnitude) * follower.speed);
-        follower.body.moveDown((dy / magnitude) * follower.speed);
-    }
+	if (follower.follow === true) {
+		const dx = leader.sprite.x - follower.x;
+		const dy = leader.sprite.y - follower.y;
+		const magnitude = Math.hypot(dx, dy);
+		follower.body.setZeroVelocity();
+		follower.body.moveRight((dx / magnitude) * follower.speed);
+		follower.body.moveDown((dy / magnitude) * follower.speed);
+	}
 }
 
 function spawnToals() {
-    for (let i = 0; i < 10; i++) {
-        new ToalMinion();
-    }
-    game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
+	for (let i = 0; i < 10; i++) {
+		new ToalMinion();
+	}
+	game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
 }
 
 function spawnAbility() {
-    new Ability();
-    game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
+	for (let i = 0; i < 4; i++){
+		new Ability();
+	}
+	//game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
 }
 
 function crop(object, initialWidth) {
-    let cropRect = new Phaser.Rectangle(0, 0, player.health/player.healthMax*initialWidth, object.height);
-    object.crop(cropRect);
+	let cropRect = new Phaser.Rectangle(0, 0, player.health / player.healthMax * initialWidth, object.height);
+	object.crop(cropRect);
+}
+
+function placeBoostPads() {
+	const padCoorindates = [[200, 200], [1800, 1800]];
+	for (let coordinates of padCoorindates) {
+		new BoostPad(coordinates[0], coordinates[1]);
+	}
 }
