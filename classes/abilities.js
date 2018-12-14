@@ -9,7 +9,7 @@ class Ability {
 
         //Physics
         this.sprite.body.fixedRotation=true;
-        this.sprite.body.setRectangle(size*163, size*202);
+        this.sprite.body.setRectangle(size * 163, size * 202);
         this.sprite.body.setCollisionGroup(abilityCollisionGroup);
         this.sprite.body.collides(playerCollisionGroup, abilityCollision(this), this);
         this.sprite.body.collides(abilityCollisionGroup);
@@ -44,5 +44,26 @@ class BoostPad {
         this.sprite = boostPadGroup.create(boostPadLocation, boostPadLocation, 'boostPad');
         scaleSprite(this.sprite, this.size);
         centerSprite(this.sprite);
+    }
+}
+class JavaBomb {
+    constructor(x, y) {
+        this.size = 0.2;
+        this.x = x;
+        this.y = y;
+        this.sprite = game.add.sprite(this.x, this.y, 'javaBomb');
+        centerSprite(this.sprite);
+        scaleSprite(this.sprite, this.size);
+    }
+    deathSequence() {
+        if (javaBomb.size <= 1.5) {
+            javaBomb.size += .05;
+            scaleSprite(javaBomb.sprite, javaBomb.size);
+            centerSprite(javaBomb.sprite);
+            game.time.events.add(Phaser.Timer.SECOND * 0.1, javaBomb.deathSequence, this);
+        } else {
+            javaBombActive = false;
+            javaBomb.sprite.kill();
+        }
     }
 }

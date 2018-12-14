@@ -86,6 +86,9 @@ let Game = {
         boostPadGroup.children.forEach(x => checkPlayerBoost(x));
         score++;
         crop(healthBarFill, healthBar.width);
+        if (javaBombActive) {
+            toalMinionGroup.children.forEach(x => checkToalBomb(x));
+        }
     },
     render: function () {
         game.debug.text(`Score: ${score}`, 670, 20, {font: '80px Courier'});

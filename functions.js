@@ -12,6 +12,7 @@ function toalCollision(object) {
         if (player.health <= 0) {
             Game.endGame();
         }
+
     }
 }
 
@@ -31,16 +32,51 @@ function checkPlayerBoost(pad) {
     }
 }
 
-function abilityCollision(object)
-{
-    return function()
-    {
-        if (!scarecrowActive) {
+function checkToalBomb(toal) {
+    if (Phaser.Rectangle.intersects(javaBomb.sprite.getBounds(), toal.getBounds())) {
+        toal.kill();
+    }
+}
+
+function abilityCollision(object) {
+    return function() {
+        switch (Math.floor(Math.random() * 2)) {
+            case 0:
+                if (!scarecrowActive && !javaBombActive) {
+                    scarecrow = new Scarecrow(object.sprite.x, object.sprite.y);
+                    object.sprite.kill();
+                    scarecrowActive = true;
+                    game.time.events.add(Phaser.Timer.SECOND * 5, scarecrow.deathSequence, this);
+                }
+                break;
+
+            case 1:
+                if (!javaBombActive && !scarecrowActive) {
+                    javaBomb = new JavaBomb(object.sprite.x, object.sprite.y);
+                    object.sprite.kill();
+                    javaBombActive = true;
+                    game.time.events.add(Phaser.Timer.SECOND * 1, javaBomb.deathSequence, this);
+
+
+
+
+                }
+                break;
+
+        }
+
+
+       /* if (Math.floor(abilityPicker === 0) && !scarecrowActive) {
             scarecrow = new Scarecrow(object.sprite.x, object.sprite.y);
             object.sprite.kill();
             scarecrowActive = true;
             game.time.events.add(Phaser.Timer.SECOND * 5, scarecrow.deathSequence, this);
-        }
+        } else {
+            javaBomb = new JavaBomb(object.sprite.x, object.sprite.y);
+            object.sprite.kill();
+            javaBombActive = true;
+            game.time.events.add(Phaser.Timer.SECOND * 1, javaBomb.deathSequence, this);
+        }*/
     }
 }
 
@@ -61,6 +97,7 @@ function preloadAssets (set) {
             game.load.image('menuScreen', 'assets/MenuScreen.png');
             game.load.image('boostPad', 'assets/boostPad.png');
             game.load.image('boostPadPressed', 'assets/boostPadPressed.png');
+            game.load.image('javaBomb', 'assets/javaBomb.png');
             break;
         case 'death':
             game.load.image('background', 'assets/grass.png');

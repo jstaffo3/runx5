@@ -6,13 +6,16 @@ let Menu = {
 
       game.add.sprite(0, 0, 'background');
       game.add.sprite(0, 0, 'menuScreen');
-      //game.add.text(30, 30, 'Runx5', { font: "65px Arial", fill: "#3a58ff", align: "center" });
-      //game.add.text(30, 100, 'Choose a character to begin', { font: "40px Arial", fill: "#3a58ff", align: "center" });
       game.add.button(133, 350, 'kai', this.startGame('kai'), this);
       game.add.button(267, 350, 'fosse', this.startGame('fosse'), this);
       game.add.button(400, 350, 'megan', this.startGame('megan'), this);
       game.add.button(533, 350, 'john', this.startGame('john'), this);
       game.add.button(667, 350, 'matt', this.startGame('matt'), this);
+      game.add.text(128, 430, 'Kai', { font: "30px Courier", fill: "#ffffff"});
+      game.add.text(237, 430, 'Fosse', { font: "30px Courier", fill: "#ffffff"});
+      game.add.text(380, 430, 'Megan', { font: "30px Courier", fill: "#ffffff"});
+      game.add.text(513, 430, 'John', { font: "30px Courier", fill: "#ffffff"});
+      game.add.text(627, 430, 'Matthew', { font: "30px Courier", fill: "#ffffff"});
   },
 
 
