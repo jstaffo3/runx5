@@ -89,7 +89,7 @@ function spawnToals() {
 
 
 function spawnAbility() {
-	for (let i = 0; i < 3; i++){
+	for (let i = 0; i < 2; i++){
 		new Ability();
 	}
 }
