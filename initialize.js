@@ -30,7 +30,6 @@ let bossSpawnerArray;
 let boostPad;
 let boostPadPressed;
 let boostPadGroup;
-let boostPadLocation;
 let javaBomb;
 let javaBombActive = false;
 

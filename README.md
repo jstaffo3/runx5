@@ -1,21 +1,27 @@
-<h1>runx5</h1>
-To play, click <a href="https://jstaffo3.github.io/runx5/">here</a>
-<p></p>
-<h5>Description:</h5>
-Run away from your friends and teacher!<br>
-Watch out for the big enemies! They will slow you down and do a lot of damage.<br>
-Score points by surviving for as long as possible.
+<h1><a href="https://jstaffo3.github.io/runx5/">runx5</a> </h1>
+<h4>Game Rules:</h4>
+
+<h5>Objective: </h5>
+<ul>
+  <li>Run away from your teacher and friends!</li>
+  <li>Watch out for your friends! They will slow you down and do a lot of damage.</li>
+   <li>Score points by surviving for as long as possible.</li>
+</ul>
+
 <h5>Controls:</h5>
 <ul>
-  <li>Move with WASD or the arrow keys.</li>
+  <li>Move: Use WASD keys or the arrow keys.</li>
   <li>Find a boost pad in the corners of the world for a speed boost.</li>
-  <li>Run over an egg to activate the power-ups.
+</ul>
+ <h5>Power-ups:</h5> 
+<ul>
+  <li>Run over an egg to activate a power-up.
   <ul>
-    <li>Have a chance to get the derpy egg, who is so funny looking that all the enemies want to check it out!</li>
-    <li>Have a chance to get the Java Bomb, which will immediatley begin to blow up and kill some enemies with its HIDEOUS code.</li> 
+    <li><i>Derpy egg</i>: All the enemies are distracted with the funny looking egg, so you can have time to escape.</li>
+    <li><i>Java Bomb</i>: Kills small enemies due to  its hideous code.</li> 
   </ul>
 </ul>  
-<h5>Game creators:</h5>
+<h4>Game creators:</h4>
 <ul>
   <li>Fosse Lin-Bianco</li>
   <li>Matthew Low</li>
@@ -23,3 +29,5 @@ Score points by surviving for as long as possible.
   <li>John Stafford</li>
   <li>Megan West</li>
 </ul>
+
+<p>To play, click the title at the top OR click <a href="https://jstaffo3.github.io/runx5/">here</a>.</p>

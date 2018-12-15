@@ -2,6 +2,7 @@ let Menu = {
 	preload: function () {
 		preloadAssets('all');
 	},
+
 	create: function () {
 		game.add.sprite(0, 0, 'background');
 		game.add.sprite(0, 0, 'menuScreen');
@@ -17,12 +18,12 @@ let Menu = {
 		game.add.text(627, 430, 'Matthew', {font: "30px Courier", fill: "#ffffff"});
 	},
 	
-	
 	update: function () {
+
 	},
 	render: function () {
+
 	},
-	
 	
 	startGame: function (buttonName) {
 		return function () {

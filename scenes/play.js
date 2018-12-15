@@ -2,6 +2,7 @@ let Game = {
 	preload: function () {
 		preloadAssets('play');
 	},
+
 	create: function () {
 		//Reset Variables
 		score = 0;
@@ -95,9 +96,11 @@ let Game = {
 			toalMinionGroup.children.forEach(x => checkToalBomb(x));
 		}
 	},
+
 	render: function () {
-		game.debug.text(`Score: ${score}`, 670, 20, {font: '80px Courier'});
+		game.debug.text(`Score: ${score}`, 670, 20, {font: 'Courier'});
 	},
+
 	endGame: function () {
 		game.state.start('Death');
 	}
