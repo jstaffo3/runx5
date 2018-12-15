@@ -16,7 +16,7 @@ class Ability {
 	abilityCollision(object) {
 		return function () {
 			if (!scarecrowActive && !javaBombActive) {
-				switch (Math.round(Math.random())){
+				switch (Math.round(Math.random() + .25)){
 					case 0:
 						scarecrow = new Scarecrow(object.sprite.x, object.sprite.y);
 						object.sprite.kill();
