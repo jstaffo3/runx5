@@ -76,6 +76,9 @@ class BossEnemy {
 			}, this);
 			this.sprite.follow = false;
 			this.shrink();
+			if (player.health <= 0) {
+				Game.endGame();
+			}
 		}
 	}
 	

@@ -1,113 +1,58 @@
-function centerSprite(object) {
-    object.anchor.x = 0.5;
-    object.anchor.y = 0.5;
+function preloadAssets(set) {
+	switch (set) {
+		case 'all':
+			game.load.image('background', 'assets/grass.png');
+			game.load.image('kai', 'assets/kai.png');
+			game.load.image('fosse', 'assets/fosse.png');
+			game.load.image('megan', 'assets/megan.png');
+			game.load.image('matt', 'assets/matthew.png');
+			game.load.image('john', 'assets/john.png');
+			game.load.image('toal', 'assets/toal.png');
+			game.load.image('scarecrow', 'assets/scarecrow.png');
+			game.load.image('egg', 'assets/yoshiegg.png');
+			game.load.image('healthBar', 'assets/healthBar.png');
+			game.load.image('healthBarFill', 'assets/healthBarFill.png');
+			game.load.image('menuScreen', 'assets/MenuScreen.png');
+			game.load.image('boostPad', 'assets/boostPad.png');
+			game.load.image('boostPadPressed', 'assets/boostPadPressed.png');
+			game.load.image('javaBomb', 'assets/javaBomb.png');
+			break;
+		case 'death':
+			game.load.image('background', 'assets/grass.png');
+			game.load.image('restart', 'assets/restart.png');
+			game.load.image('newCharacter', 'assets/newCharacter.png');
+			//game.load.image('restartHover', 'assets/restartHover.png');
+			//game.load.image('newCharacterHover', 'assets/newCharacterHover.png');
+			game.load.image('gameOverScreen', 'assets/GameOverScreen.png');
+			break;
+	}
 }
 
-function toalCollision(object) {
-    return function() {
-        player.health -= 1;
-        //toalMinionGroup.remove(object);
-        object.sprite.kill();
-        //toalMinionGroup.children.splice(toalMinionGroup.children.indexOf(object),1);
-        if (player.health <= 0) {
-            Game.endGame();
-        }
-
-    }
+function centerSprite(object) {
+	object.anchor.x = 0.5;
+	object.anchor.y = 0.5;
 }
 
 function spawnBossEnemy() {
-    new BossEnemy();
-    game.time.events.add(Phaser.Timer.SECOND * 15, spawnBossEnemy, this);
+	new BossEnemy();
+	game.time.events.add(Phaser.Timer.SECOND * 15, spawnBossEnemy, this);
 }
 
 function checkPlayerBoost(pad) {
-    if (Phaser.Rectangle.intersects(player.sprite.getBounds(), pad.getBounds())) {
-        player.speedModifier = 1.5;
-        pad.loadTexture('boostPadPressed');
-        game.time.events.add(Phaser.Timer.SECOND * 5, function () {
-            player.speedModifier = 1;
-            pad.loadTexture('boostPad');
-        }, this);
-    }
+	if (Phaser.Rectangle.intersects(player.sprite.getBounds(), pad.getBounds())) {
+		player.speedModifier = 1.5;
+		pad.loadTexture('boostPadPressed');
+		game.time.events.add(Phaser.Timer.SECOND * 5, function () {
+			player.speedModifier = 1;
+			pad.loadTexture('boostPad');
+		}, this);
+	}
 }
 
 function checkToalBomb(toal) {
-    if (Phaser.Rectangle.intersects(javaBomb.sprite.getBounds(), toal.getBounds())) {
-        toal.kill();
-    }
-}
-
-function abilityCollision(object) {
-    return function() {
-        switch (Math.floor(Math.random() * 2)) {
-            case 0:
-                if (!scarecrowActive && !javaBombActive) {
-                    scarecrow = new Scarecrow(object.sprite.x, object.sprite.y);
-                    object.sprite.kill();
-                    scarecrowActive = true;
-                    game.time.events.add(Phaser.Timer.SECOND * 5, scarecrow.deathSequence, this);
-                }
-                break;
-
-            case 1:
-                if (!javaBombActive && !scarecrowActive) {
-                    javaBomb = new JavaBomb(object.sprite.x, object.sprite.y);
-                    object.sprite.kill();
-                    javaBombActive = true;
-                    game.time.events.add(Phaser.Timer.SECOND * 1, javaBomb.deathSequence, this);
-
-
-
-
-                }
-                break;
-
-        }
-
-
-       /* if (Math.floor(abilityPicker === 0) && !scarecrowActive) {
-            scarecrow = new Scarecrow(object.sprite.x, object.sprite.y);
-            object.sprite.kill();
-            scarecrowActive = true;
-            game.time.events.add(Phaser.Timer.SECOND * 5, scarecrow.deathSequence, this);
-        } else {
-            javaBomb = new JavaBomb(object.sprite.x, object.sprite.y);
-            object.sprite.kill();
-            javaBombActive = true;
-            game.time.events.add(Phaser.Timer.SECOND * 1, javaBomb.deathSequence, this);
-        }*/
-    }
-}
-
-function preloadAssets (set) {
-    switch (set) {
-        case 'all':
-            game.load.image('background', 'assets/grass.png');
-            game.load.image('kai', 'assets/kai.png');
-            game.load.image('fosse', 'assets/fosse.png');
-            game.load.image('megan', 'assets/megan.png');
-            game.load.image('matt', 'assets/matthew.png');
-            game.load.image('john', 'assets/john.png');
-            game.load.image('toal', 'assets/toal.png');
-            game.load.image('scarecrow', 'assets/scarecrow.png');
-            game.load.image('egg', 'assets/yoshiegg.png');
-            game.load.image('healthBar', 'assets/healthBar.png');
-            game.load.image('healthBarFill', 'assets/healthBarFill.png');
-            game.load.image('menuScreen', 'assets/MenuScreen.png');
-            game.load.image('boostPad', 'assets/boostPad.png');
-            game.load.image('boostPadPressed', 'assets/boostPadPressed.png');
-            game.load.image('javaBomb', 'assets/javaBomb.png');
-            break;
-        case 'death':
-            game.load.image('background', 'assets/grass.png');
-            game.load.image('restart', 'assets/restart.png');
-            game.load.image('newCharacter', 'assets/newCharacter.png');
-            //game.load.image('restartHover', 'assets/restartHover.png');
-            //game.load.image('newCharacterHover', 'assets/newCharacterHover.png');
-            game.load.image('gameOverScreen', 'assets/GameOverScreen.png');
-            break;
-    }
+	if (Phaser.Rectangle.intersects(javaBomb.sprite.getBounds(), toal.getBounds())) {
+		toal.kill();
+	}
 }
 
 function scaleSprite(object, scale) {
@@ -135,12 +80,13 @@ function spawnToals() {
 	game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
 }
 
+
 function spawnAbility() {
-	for (let i = 0; i < 4; i++){
+	for (let i = 0; i < 3; i++){
 		new Ability();
 	}
-	//game.time.events.add(Phaser.Timer.SECOND * 5, spawnAbility, this);
 }
+
 
 function crop(object, initialWidth) {
 	let cropRect = new Phaser.Rectangle(0, 0, player.health / player.healthMax * initialWidth, object.height);
