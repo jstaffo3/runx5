@@ -2,7 +2,7 @@ class Player {
 	constructor(name) {
 		this.name = name;
 		this.sprite = game.add.sprite(game.world.centerX, game.world.centerY, name);
-        formatSprite(this.sprite);
+		formatSprite(this.sprite);
 		this.health = 100;
 		this.healthMax = 100;
 		this.speedBase = 310;

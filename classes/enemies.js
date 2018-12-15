@@ -4,8 +4,8 @@ class ToalMinion {
 		this.sprite = toalMinionGroup.create(this.getSpawnLocation()[0], this.getSpawnLocation()[1], 'toal');
 		this.sprite.speed = Math.random() * 150 + 150;
 		this.sprite.follow = true;
-        formatSprite(this.sprite, this.size);
-
+		formatSprite(this.sprite, this.size);
+		
 		//Physics
 		this.sprite.body.setRectangle(this.size * 163, this.size * 202);
 		this.sprite.body.setCollisionGroup(toalMinionsCollisionGroup);
@@ -35,11 +35,11 @@ class ToalMinion {
 		}
 	}
 	
-	getSpawnLocation(){
-		let [spawnX,spawnY] = [game.world.randomX, game.world.randomY];
-		while (spawnX < game.camera.x + 800 && spawnX > game.camera.x){
+	getSpawnLocation() {
+		let [spawnX, spawnY] = [game.world.randomX, game.world.randomY];
+		while (spawnX < game.camera.x + 800 && spawnX > game.camera.x) {
 			spawnX = game.world.randomX;
-			while(spawnY < game.camera.y + 800 && spawnY > game.camera.y){
+			while (spawnY < game.camera.y + 800 && spawnY > game.camera.y) {
 				spawnY = game.world.randomY;
 			}
 		}
@@ -54,13 +54,14 @@ class BossEnemy {
 		this.sprite = bossEnemyGroup.create(game.world.randomX, game.world.randomY, this.name);
 		this.sprite.follow = true;
 		this.sprite.speed = Math.random() * 85 + 240;
-        formatSprite(this.sprite, this.size);
-
+		formatSprite(this.sprite, this.size);
+		
 		//Physics
 		this.sprite.body.setCollisionGroup(bossEnemyCollisionGroup);
 		this.sprite.body.collides(playerCollisionGroup, this.playerCollision(), this);
 		this.sprite.body.collides([toalMinionsCollisionGroup, bossEnemyCollisionGroup]);
 	}
+	
 	playerCollision() {
 		return function () {
 			game.camera.flash(0xff0000, 500);
@@ -80,7 +81,7 @@ class BossEnemy {
 	shrink() {
 		if (this.size >= 0) {
 			this.size -= .01;
-            formatSprite(this.sprite, this.size);
+			formatSprite(this.sprite, this.size);
 			game.time.events.add(Phaser.Timer.SECOND * 0.01, this.shrink, this);
 		} else {
 			this.sprite.kill();

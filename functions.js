@@ -10,21 +10,21 @@ function preloadAssets(set) {
 			game.load.image('menuScreen', 'assets/menuScreen.png');
 			break;
 		case 'play':
-            game.load.image('background', 'assets/grass.png');
-            game.load.image('kai', 'assets/kai.png');
-            game.load.image('fosse', 'assets/fosse.png');
-            game.load.image('megan', 'assets/megan.png');
-            game.load.image('matt', 'assets/matthew.png');
-            game.load.image('john', 'assets/john.png');
-            game.load.image('boostPad', 'assets/boostPad.png');
-            game.load.image('boostPadPressed', 'assets/boostPadPressed.png');
-            game.load.image('javaBomb', 'assets/javaBomb.png');
-            game.load.image('scarecrow', 'assets/scarecrow.png');
-            game.load.image('egg', 'assets/yoshiegg.png');
-            game.load.image('healthBar', 'assets/healthBar.png');
-            game.load.image('healthBarFill', 'assets/healthBarFill.png');
-            game.load.image('toal', 'assets/toal.png');
-            break;
+			game.load.image('background', 'assets/grass.png');
+			game.load.image('kai', 'assets/kai.png');
+			game.load.image('fosse', 'assets/fosse.png');
+			game.load.image('megan', 'assets/megan.png');
+			game.load.image('matt', 'assets/matthew.png');
+			game.load.image('john', 'assets/john.png');
+			game.load.image('boostPad', 'assets/boostPad.png');
+			game.load.image('boostPadPressed', 'assets/boostPadPressed.png');
+			game.load.image('javaBomb', 'assets/javaBomb.png');
+			game.load.image('scarecrow', 'assets/scarecrow.png');
+			game.load.image('egg', 'assets/yoshiegg.png');
+			game.load.image('healthBar', 'assets/healthBar.png');
+			game.load.image('healthBarFill', 'assets/healthBarFill.png');
+			game.load.image('toal', 'assets/toal.png');
+			break;
 		case 'death':
 			game.load.image('background', 'assets/grass.png');
 			game.load.image('restart', 'assets/restart.png');
@@ -35,10 +35,10 @@ function preloadAssets(set) {
 }
 
 function spawnBossEnemy() {
-    let nameIndex = Math.floor(Math.random() * (bossSpawnerArray.length++));
-    let name = bossSpawnerArray[nameIndex];
-    bossSpawnerArray.splice(nameIndex, 1);
-    new BossEnemy(name);
+	let nameIndex = Math.floor(Math.random() * (bossSpawnerArray.length++));
+	let name = bossSpawnerArray[nameIndex];
+	bossSpawnerArray.splice(nameIndex, 1);
+	new BossEnemy(name);
 	game.time.events.add(Phaser.Timer.SECOND * 15, spawnBossEnemy, this);
 }
 
@@ -63,10 +63,10 @@ function formatSprite(object, scale = 1) {
 	object.scale.setTo(scale);
 	if (object.body !== null) {
 		object.body.setRectangle(object.width, object.height);
-        object.body.fixedRotation = true;
-    }
-    object.anchor.x = 0.5;
-    object.anchor.y = 0.5;
+		object.body.fixedRotation = true;
+	}
+	object.anchor.x = 0.5;
+	object.anchor.y = 0.5;
 }
 
 function moveToward(follower, leader) {
@@ -88,7 +88,7 @@ function spawnToals() {
 }
 
 function spawnAbility() {
-	for (let i = 0; i < 2; i++){
+	for (let i = 0; i < 2; i++) {
 		new Ability();
 	}
 }

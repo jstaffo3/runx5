@@ -16,7 +16,7 @@ class Ability {
 	abilityCollision(object) {
 		return function () {
 			if (!scarecrowActive && !javaBombActive) {
-				switch (Math.round(Math.random() + .25)){
+				switch (Math.round(Math.random() + .25)) {
 					case 0:
 						scarecrow = new Scarecrow(object.sprite.x, object.sprite.y);
 						object.sprite.kill();
@@ -50,7 +50,7 @@ class Scarecrow {
 	deathSequence() {
 		if (scarecrow.size <= 1.5) {
 			scarecrow.size += .05;
-            formatSprite(scarecrow.sprite, scarecrow.size);
+			formatSprite(scarecrow.sprite, scarecrow.size);
 			game.time.events.add(Phaser.Timer.SECOND * 0.1, scarecrow.deathSequence, this);
 		} else {
 			scarecrowActive = false;
@@ -65,7 +65,7 @@ class BoostPad {
 		this.size = 0.25;
 		this.sprite = boostPadGroup.create(x, y, 'boostPad');
 		this.sprite.angle = angleToCenter;
-        formatSprite(this.sprite, this.size);
+		formatSprite(this.sprite, this.size);
 	}
 }
 
@@ -75,7 +75,7 @@ class JavaBomb {
 		this.x = x;
 		this.y = y;
 		this.sprite = game.add.sprite(this.x, this.y, 'javaBomb');
-        formatSprite(this.sprite, this.size);
+		formatSprite(this.sprite, this.size);
 	}
 	
 	deathSequence() {
