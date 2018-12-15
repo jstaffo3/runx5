@@ -80,6 +80,17 @@ function moveToward(follower, leader) {
 	}
 }
 
+function getSpawnLocation() {
+	let [spawnX, spawnY] = [game.world.randomX, game.world.randomY];
+	while (spawnX < game.camera.x + 800 && spawnX > game.camera.x) {
+		spawnX = game.world.randomX;
+		while (spawnY < game.camera.y + 800 && spawnY > game.camera.y) {
+			spawnY = game.world.randomY;
+		}
+	}
+	return [spawnX, spawnY];
+}
+
 function spawnToals() {
 	for (let i = 0; i < 10; i++) {
 		new ToalMinion();

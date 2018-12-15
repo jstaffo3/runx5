@@ -1,7 +1,7 @@
 class ToalMinion {
 	constructor() {
 		this.size = Math.random() * .15 + 0.125;
-		this.sprite = toalMinionGroup.create(this.getSpawnLocation()[0], this.getSpawnLocation()[1], 'toal');
+		this.sprite = toalMinionGroup.create(getSpawnLocation()[1], getSpawnLocation()[0], 'toal');
 		this.sprite.speed = Math.random() * 150 + 150;
 		this.sprite.follow = true;
 		formatSprite(this.sprite, this.size);
@@ -35,23 +35,13 @@ class ToalMinion {
 		}
 	}
 	
-	getSpawnLocation() {
-		let [spawnX, spawnY] = [game.world.randomX, game.world.randomY];
-		while (spawnX < game.camera.x + 800 && spawnX > game.camera.x) {
-			spawnX = game.world.randomX;
-			while (spawnY < game.camera.y + 800 && spawnY > game.camera.y) {
-				spawnY = game.world.randomY;
-			}
-		}
-		return [spawnX, spawnY];
-	}
 }
 
 class BossEnemy {
 	constructor(name) {
 		this.size = 1.5;
 		this.name = name;
-		this.sprite = bossEnemyGroup.create(game.world.randomX, game.world.randomY, this.name);
+		this.sprite = bossEnemyGroup.create(getSpawnLocation()[1], getSpawnLocation()[0], this.name);
 		this.sprite.follow = true;
 		this.sprite.speed = Math.random() * 85 + 240;
 		formatSprite(this.sprite, this.size);
