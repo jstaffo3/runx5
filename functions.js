@@ -87,13 +87,11 @@ function spawnToals() {
 	game.time.events.add(Phaser.Timer.SECOND * 5, spawnToals, this);
 }
 
-
 function spawnAbility() {
 	for (let i = 0; i < 2; i++){
 		new Ability();
 	}
 }
-
 
 function crop(object, initialWidth) {
 	let cropRect = new Phaser.Rectangle(0, 0, player.health / player.healthMax * initialWidth, object.height);
