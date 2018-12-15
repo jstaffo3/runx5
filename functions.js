@@ -28,11 +28,6 @@ function preloadAssets(set) {
 	}
 }
 
-function centerSprite(object) {
-	object.anchor.x = 0.5;
-	object.anchor.y = 0.5;
-}
-
 function spawnBossEnemy() {
 	new BossEnemy();
 	game.time.events.add(Phaser.Timer.SECOND * 15, spawnBossEnemy, this);
@@ -55,11 +50,14 @@ function checkToalBomb(toal) {
 	}
 }
 
-function scaleSprite(object, scale) {
+function formatSprite(object, scale = 1) {
 	object.scale.setTo(scale);
 	if (object.body !== null) {
 		object.body.setRectangle(object.width, object.height);
-	}
+        object.body.fixedRotation = true;
+    }
+    object.anchor.x = 0.5;
+    object.anchor.y = 0.5;
 }
 
 function moveToward(follower, leader) {

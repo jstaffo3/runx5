@@ -2,8 +2,7 @@ class Ability {
 	constructor() {
 		const size = 0.2;
 		this.sprite = abilityGroup.create(game.world.randomX, game.world.randomY, 'egg');
-		centerSprite(this.sprite);
-		scaleSprite(this.sprite, size);
+		formatSprite(this.sprite, size);
 		
 		//Physics
 		this.sprite.body.fixedRotation = true;
@@ -45,15 +44,13 @@ class Scarecrow {
 		this.x = x;
 		this.y = y;
 		this.sprite = game.add.sprite(this.x, this.y, 'scarecrow');
-		centerSprite(this.sprite);
-		scaleSprite(this.sprite, this.size);
+		formatSprite(this.sprite, this.size);
 	}
 	
 	deathSequence() {
 		if (scarecrow.size <= 1.5) {
 			scarecrow.size += .05;
-			scaleSprite(scarecrow.sprite, scarecrow.size);
-			centerSprite(scarecrow.sprite);
+            formatSprite(scarecrow.sprite, scarecrow.size);
 			game.time.events.add(Phaser.Timer.SECOND * 0.1, scarecrow.deathSequence, this);
 		} else {
 			scarecrowActive = false;
@@ -68,8 +65,7 @@ class BoostPad {
 		this.size = 0.25;
 		this.sprite = boostPadGroup.create(x, y, 'boostPad');
 		this.sprite.angle = angleToCenter;
-		scaleSprite(this.sprite, this.size);
-		centerSprite(this.sprite);
+        formatSprite(this.sprite, this.size);
 	}
 }
 
@@ -79,15 +75,13 @@ class JavaBomb {
 		this.x = x;
 		this.y = y;
 		this.sprite = game.add.sprite(this.x, this.y, 'javaBomb');
-		centerSprite(this.sprite);
-		scaleSprite(this.sprite, this.size);
+        formatSprite(this.sprite, this.size);
 	}
 	
 	deathSequence() {
 		if (javaBomb.size <= 1.5) {
 			javaBomb.size += .05;
-			scaleSprite(javaBomb.sprite, javaBomb.size);
-			centerSprite(javaBomb.sprite);
+			formatSprite(javaBomb.sprite, javaBomb.size);
 			game.time.events.add(Phaser.Timer.SECOND * 0.1, javaBomb.deathSequence, this);
 		} else {
 			javaBombActive = false;
