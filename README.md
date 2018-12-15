@@ -15,7 +15,8 @@
 </ul>
  <h5>Power-ups:</h5> 
 <ul>
-  <li>Run over an egg to activate a power-up.
+  <li><i>Boost Pads</i>: Run over a Boost Pad to get some extra speed.</li> 
+  <li>Run over an egg to activate a suprise power-up.
   <ul>
     <li><i>Derpy egg</i>: All the enemies are distracted with the funny looking egg, so you can have time to escape.</li>
     <li><i>Java Bomb</i>: Kills small enemies due to  its hideous code.</li> 
