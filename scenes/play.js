@@ -1,6 +1,6 @@
 let Game = {
 	preload: function () {
-		preloadAssets('all');
+		preloadAssets('play');
 	},
 	create: function () {
 		//Reset Variables
@@ -69,7 +69,10 @@ let Game = {
 		game.time.events.add(Phaser.Timer.SECOND * 10, spawnAbility, this);
 		game.time.events.add(Phaser.Timer.SECOND * 15, spawnBossEnemy, this);
 
-		//Health Bar
+		//Configure Boss Array
+        bossSpawnerArray = characterArray.filter(x => x !== characterSelection);
+
+        //Health Bar
 		healthBar = healthBarGroup.create(healthLocation[0], healthLocation[1], 'healthBar');
 		healthBar.fixedToCamera = true;
 		healthBarFill = healthBarGroup.create(healthLocation[0], healthLocation[1], 'healthBarFill');

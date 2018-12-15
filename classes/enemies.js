@@ -48,12 +48,12 @@ class ToalMinion {
 }
 
 class BossEnemy {
-	constructor() {
+	constructor(name) {
 		this.size = 1.5;
-		this.name = bossSpawnerArray[Math.floor(Math.random() * (bossSpawnerArray.length + 1))];
+		this.name = name;
 		this.sprite = bossEnemyGroup.create(game.world.randomX, game.world.randomY, this.name);
 		this.sprite.follow = true;
-		this.sprite.speed = Math.random() * 100 + 220;
+		this.sprite.speed = Math.random() * 85 + 240;
         formatSprite(this.sprite, this.size);
 
 		//Physics
@@ -61,11 +61,10 @@ class BossEnemy {
 		this.sprite.body.collides(playerCollisionGroup, this.playerCollision(), this);
 		this.sprite.body.collides([toalMinionsCollisionGroup, bossEnemyCollisionGroup]);
 	}
-	
 	playerCollision() {
 		return function () {
 			game.camera.flash(0xff0000, 500);
-			player.health -= 10;
+			player.health -= 12.5;
 			player.speedModifier = 0.65;
 			game.time.events.add(Phaser.Timer.SECOND * 2, function () {
 				player.speedModifier = 1;

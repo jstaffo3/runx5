@@ -3,7 +3,6 @@ let Menu = {
       preloadAssets('all');
   },
   create: function() {
-
       game.add.sprite(0, 0, 'background');
       game.add.sprite(0, 0, 'menuScreen');
       game.add.button(133, 350, 'kai', this.startGame('kai'), this);
@@ -26,7 +25,6 @@ let Menu = {
   startGame: function (buttonName) {
       return function () {
           characterSelection = buttonName;
-          bossSpawnerArray = characterArray.filter(x => x !== characterSelection);
           game.state.start('Game');
       }
   }
